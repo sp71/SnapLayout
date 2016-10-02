@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'SnapLayout_Example' do
+  pod 'SnapLayout', :path => '../'
+
+  target 'SnapLayout_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
