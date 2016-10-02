@@ -1,0 +1,22 @@
+{
+  "name": "SnapLayout",
+  "version": "0.1.0",
+  "summary": "A short description of SnapLayout.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/sp71/SnapLayout",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Satinder Singh": "satindersingh71@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/sp71/SnapLayout.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "SnapLayout/Classes/**/*"
+}

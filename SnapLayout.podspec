@@ -9,26 +9,21 @@
 Pod::Spec.new do |s|
   s.name             = 'SnapLayout'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of SnapLayout.'
+  s.summary          = 'Concise API for iOS & OS X Auto Layout'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+s.description  = <<-DESC
+# SnapLayout
+Concise API for iOS & OS X Auto Layout. SnapLayout extends `UIView` to deliver a list of APIs to improve readability while also shortening constraint code. Internally using AutoLayout to provide the best experience.
+DESC
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
-
-  s.homepage         = 'https://github.com/<GITHUB_USERNAME>/SnapLayout'
+  s.homepage         = 'https://github.com/sp71/SnapLayout'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Satinder Singh' => 'satinder@ryb.ai' }
-  s.source           = { :git => 'https://github.com/<GITHUB_USERNAME>/SnapLayout.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.author           = { 'Satinder Singh' => 'satindersingh71@gmail.com' }
+  s.source           = { :git => 'https://github.com/sp71/SnapLayout.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '9.0'
+  s.requires_arc = true
 
   s.source_files = 'SnapLayout/Classes/**/*'
   
@@ -38,5 +33,4 @@ TODO: Add long description of the pod here.
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
