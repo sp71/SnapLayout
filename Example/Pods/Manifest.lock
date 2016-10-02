@@ -1,0 +1,16 @@
+PODS:
+  - SnapLayout (0.1.0)
+
+DEPENDENCIES:
+  - SnapLayout (from `../`)
+
+EXTERNAL SOURCES:
+  SnapLayout:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SnapLayout: fdee9eb11ceb8d18bf2fe2444b0ea8363c41ede1
+
+PODFILE CHECKSUM: 5160f9ae3cb931e7663d95b68905f03acc7b2467
+
+COCOAPODS: 1.1.0.rc.2
