@@ -47,6 +47,20 @@ public extension UIView {
     }
     
     /**
+     Pin to superview's leading and trailing margin guide
+     - returns: List of NSLayoutConstraints applied to view in the following order: leadingAnchor, trailingAnchor
+     */
+    func pinToSuperViewSideMarginGuides() -> [NSLayoutConstraint] {
+        translatesAutoresizingMaskIntoConstraints = false
+        var constraintList = [NSLayoutConstraint]()
+        guard let superview = superview else { return constraintList }
+        constraintList.append(leadingAnchor.constraintEqualToAnchor(superview.layoutMarginsGuide.leadingAnchor))
+        constraintList.append(trailingAnchor.constraintEqualToAnchor(superview.layoutMarginsGuide.trailingAnchor))
+        constraintList.forEach { $0.active = true }
+        return constraintList
+    }
+    
+    /**
      Anchor height relative to superview based on multipler & constant
      
      - parameter multiplier: multiplier constant for the constraint.
@@ -145,7 +159,9 @@ public extension UIView {
      two layout anchors plus a constant offset.
      */
     func snapHorizontally(leadingView leadingView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
-        return leadingView.snapHorizontally(trailingView: self)
+        let constraint = leadingAnchor.constraintEqualToAnchor(leadingView.trailingAnchor, constant: constant)
+        constraint.active = true
+        return constraint
     }
     
     /**
@@ -171,7 +187,9 @@ public extension UIView {
      two layout anchors plus a constant offset.
      */
     func snapVertically(topView topView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
-        return topView.snapVertically(bottomView: self, constant: constant)
+        let constraint = topAnchor.constraintEqualToAnchor(topView.bottomAnchor, constant: constant)
+        constraint.active = true
+        return constraint
     }
     
     /**
