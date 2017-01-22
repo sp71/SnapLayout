@@ -17,8 +17,8 @@ internal final class ViewController: UIViewController {
     }
     
     /// Container view encompassing all subviews of View Controller
-    private let containerView = UIView()
-    private let emojiTextView = UITextView()
+    fileprivate let containerView = UIView()
+    fileprivate let emojiTextView = UITextView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,41 +29,41 @@ internal final class ViewController: UIViewController {
     }
     
     /// Setup Container View
-    private func setupContainerView() {
-        containerView.backgroundColor = UIColor.blueColor().colorWithAlphaComponent(0.2)
+    fileprivate func setupContainerView() {
+        containerView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
         view.addSubview(containerView)
         // Container View will now encompass entire view real estate
-        containerView.pinToSuperview(.All)
+        _ = containerView.pinToSuperview(.all)
     }
     
     /// Setup Container View
-    private func setupEmojiTextView() {
+    fileprivate func setupEmojiTextView() {
         emojiTextView.showsVerticalScrollIndicator = true
         emojiTextView.text = emojiList()
         containerView.addSubview(emojiTextView)
         // Pin text view to top, left, right of its superview and have it be 0.25 height of superview
-        emojiTextView.pinToSuperview([.Top, .Left, .Right], insets: Constants.emojiTextViewInset)
+        _ = emojiTextView.pinToSuperview([.top, .left, .right], insets: Constants.emojiTextViewInset)
         let emojiTextViewMultiplier = Constants.emojiTextViewHeightRelativeToSuperViewFactor
-        emojiTextView.anchorHeightToSuperview(multiplier: emojiTextViewMultiplier)
+        _ = emojiTextView.anchorHeightToSuperview(multiplier: emojiTextViewMultiplier)
     }
     
     /// Setup label with SnapLayout text
-    private func setupSnapLayoutLabel() {
+    fileprivate func setupSnapLayoutLabel() {
         let snapLabel = UILabel()
         snapLabel.text = "SnapLayout"
-        snapLabel.textColor = UIColor.whiteColor()
+        snapLabel.textColor = UIColor.white
         snapLabel.font = UIFont(name: "Avenir-Book", size: 24)
         containerView.addSubview(snapLabel)
         /// label will be below emojiTextView and aligned horizontally relative to super view
-        snapLabel.snapVertically(topView: emojiTextView)
-        snapLabel.alignToSuperView(.CenterX)
+        _ = snapLabel.snapVertically(topView: emojiTextView)
+        _ = snapLabel.alignToSuperView(.centerX)
     }
     
     /**
      Produces single string containing MANY emojis 😁
      - returns: String containing MANY emojis 😉
      */
-    private func emojiList() -> String {
+    fileprivate func emojiList() -> String {
         var emojiString = "😁😂😃😄😅😆😇😈😉😊😋😌😍😎😏😐😑😒😓😔😕😖😗😘😙😚😛😜😝😞😟😠😡😢😣😤😥😦😧😨😩😪😫😬😭😮😯😰😱😲😳😴😵😶😷😸😹😺😻😼😽😾😿🙀🙁🙂🙃🙄🙅🙆🙇🙈🙉🙊🙋🙌🙍🙎🙏"
         for _ in 0 ... 3 {
             emojiString += emojiString
