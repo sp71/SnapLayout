@@ -9,13 +9,13 @@
 ///  Defines Axis alignment to be used
 public enum Axis {
     /// Center only the X axis
-    case CenterX
+    case centerX
     
     /// Center only the Y axis
-    case CenterY
+    case centerY
     
     /// Center the X and Y axis
-    case CenterXAndY
+    case centerXAndY
 }
 
 public extension UIView {
@@ -26,23 +26,23 @@ public extension UIView {
      - parameter insets: Insets to apply to given edges (defaulted to UIEdgeInsetsZero)
      - returns: List of NSLayoutConstraints applied to view in the following order if applied: Left, Right, Top, Bottom
      */
-    func pinToSuperview(edges: UIRectEdge, insets: UIEdgeInsets = UIEdgeInsetsZero) -> [NSLayoutConstraint] {
+    func pinToSuperview(_ edges: UIRectEdge, insets: UIEdgeInsets = UIEdgeInsets.zero) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         var constraintList = [NSLayoutConstraint]()
         guard let superview = superview else { return constraintList }
-        if edges.contains(.All) || edges.contains(.Left) {
-            constraintList.append(leadingAnchor.constraintEqualToAnchor(superview.leadingAnchor, constant: insets.left))
+        if edges.contains(.all) || edges.contains(.left) {
+            constraintList.append(leadingAnchor.constraint(equalTo: superview.leadingAnchor, constant: insets.left))
         }
-        if edges.contains(.All) || edges.contains(.Right) {
-            constraintList.append(trailingAnchor.constraintEqualToAnchor(superview.trailingAnchor, constant: insets.right))
+        if edges.contains(.all) || edges.contains(.right) {
+            constraintList.append(trailingAnchor.constraint(equalTo: superview.trailingAnchor, constant: insets.right))
         }
-        if edges.contains(.All) || edges.contains(.Top) {
-            constraintList.append(topAnchor.constraintEqualToAnchor(superview.topAnchor, constant: insets.top))
+        if edges.contains(.all) || edges.contains(.top) {
+            constraintList.append(topAnchor.constraint(equalTo: superview.topAnchor, constant: insets.top))
         }
-        if edges.contains(.All) || edges.contains(.Bottom) {
-            constraintList.append(bottomAnchor.constraintEqualToAnchor(superview.bottomAnchor, constant: insets.bottom))
+        if edges.contains(.all) || edges.contains(.bottom) {
+            constraintList.append(bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: insets.bottom))
         }
-        constraintList.forEach { $0.active = true }
+        constraintList.forEach { $0.isActive = true }
         return constraintList
     }
     
@@ -54,9 +54,9 @@ public extension UIView {
         translatesAutoresizingMaskIntoConstraints = false
         var constraintList = [NSLayoutConstraint]()
         guard let superview = superview else { return constraintList }
-        constraintList.append(leadingAnchor.constraintEqualToAnchor(superview.layoutMarginsGuide.leadingAnchor))
-        constraintList.append(trailingAnchor.constraintEqualToAnchor(superview.layoutMarginsGuide.trailingAnchor))
-        constraintList.forEach { $0.active = true }
+        constraintList.append(leadingAnchor.constraint(equalTo: superview.layoutMarginsGuide.leadingAnchor))
+        constraintList.append(trailingAnchor.constraint(equalTo: superview.layoutMarginsGuide.trailingAnchor))
+        constraintList.forEach { $0.isActive = true }
         return constraintList
     }
     
@@ -67,11 +67,11 @@ public extension UIView {
      - parameter constant: offset constant for this relationship.
      - returns: An NSLayoutConstraint object that defines the attribute represented by this layout anchor as equal to the attribute represented by the anchor parameter multiplied by the m constant plus the constant c
      */
-    func anchorHeightToSuperview(multiplier multiplier: CGFloat = 0, constant: CGFloat = 0) -> NSLayoutConstraint {
+    func anchorHeightToSuperview(multiplier: CGFloat = 0, constant: CGFloat = 0) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         assert(superview != nil, "superview cannot be nil")
-        let constraint = heightAnchor.constraintEqualToAnchor(superview!.heightAnchor, multiplier: multiplier, constant: constant)
-        constraint.active = true
+        let constraint = heightAnchor.constraint(equalTo: superview!.heightAnchor, multiplier: multiplier, constant: constant)
+        constraint.isActive = true
         return constraint
     }
     
@@ -82,11 +82,11 @@ public extension UIView {
      - parameter constant: offset constant for this relationship.
      - returns: An NSLayoutConstraint object that defines the attribute represented by this layout anchor as equal to the attribute represented by the anchor parameter multiplied by the m constant plus the constant c
      */
-    func anchorWidthToSuperview(multiplier multiplier: CGFloat, constant: CGFloat = 0) -> NSLayoutConstraint {
+    func anchorWidthToSuperview(multiplier: CGFloat, constant: CGFloat = 0) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
         assert(superview != nil, "superview cannot be nil")
-        let constraint = widthAnchor.constraintEqualToAnchor(superview!.widthAnchor, multiplier: multiplier, constant: constant)
-        constraint.active = true
+        let constraint = widthAnchor.constraint(equalTo: superview!.widthAnchor, multiplier: multiplier, constant: constant)
+        constraint.isActive = true
         return constraint
     }
     
@@ -96,7 +96,7 @@ public extension UIView {
      - parameter size: Anchors width constraint and height constraint based on size values
      - returns: List of NSLayoutConstraints in following order: width, height
      */
-    func anchorSizeToSuperView(size: CGSize) -> [NSLayoutConstraint] {
+    func anchorSizeToSuperView(_ size: CGSize) -> [NSLayoutConstraint] {
         return [anchorWidthToSuperview(multiplier: size.width), anchorHeightToSuperview(multiplier: size.height)]
     }
     
@@ -106,10 +106,10 @@ public extension UIView {
      - parameter constant: Constant representing the size of the attribute associated with this dimension anchor.
      - returns: An NSLayoutConstraint object that defines a constant size for the attribute associated with this dimension anchor.
      */
-    func anchorWidth(constant constant: CGFloat) -> NSLayoutConstraint {
+    func anchorWidth(constant: CGFloat) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
-        let constraint = widthAnchor.constraintEqualToConstant(constant)
-        constraint.active = true
+        let constraint = widthAnchor.constraint(equalToConstant: constant)
+        constraint.isActive = true
         return constraint
     }
     
@@ -119,10 +119,10 @@ public extension UIView {
      - parameter constant: Constant representing the size of the attribute associated with this dimension anchor.
      - returns: An NSLayoutConstraint object that defines a constant size for the attribute associated with this dimension anchor.
      */
-    func anchorHeight(constant constant: CGFloat) -> NSLayoutConstraint {
+    func anchorHeight(constant: CGFloat) -> NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
-        let constraint = heightAnchor.constraintEqualToConstant(constant)
-        constraint.active = true
+        let constraint = heightAnchor.constraint(equalToConstant: constant)
+        constraint.isActive = true
         return constraint
     }
     
@@ -132,7 +132,7 @@ public extension UIView {
      - parameter size: Anchors width constraint and height constraint based on size values
      - returns: List of NSLayoutConstraints in following order: width, height
      */
-    func anchorSize(size: CGSize) -> [NSLayoutConstraint] {
+    func anchorSize(_ size: CGSize) -> [NSLayoutConstraint] {
         return [anchorWidth(constant: size.width), anchorHeight(constant: size.height)]
     }
     
@@ -144,9 +144,9 @@ public extension UIView {
      - returns: An NSLayoutConstraint object that defines an equal relationship between the attributes represented by the
      two layout anchors plus a constant offset.
      */
-    func snapHorizontally(trailingView trailingView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
-        let constraint = trailingAnchor.constraintEqualToAnchor(trailingView.leadingAnchor, constant: constant)
-        constraint.active = true
+    func snapHorizontally(trailingView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
+        let constraint = trailingAnchor.constraint(equalTo: trailingView.leadingAnchor, constant: constant)
+        constraint.isActive = true
         return constraint
     }
     
@@ -158,9 +158,9 @@ public extension UIView {
      - returns: An NSLayoutConstraint object that defines an equal relationship between the attributes represented by the
      two layout anchors plus a constant offset.
      */
-    func snapHorizontally(leadingView leadingView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
-        let constraint = leadingAnchor.constraintEqualToAnchor(leadingView.trailingAnchor, constant: constant)
-        constraint.active = true
+    func snapHorizontally(leadingView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
+        let constraint = leadingAnchor.constraint(equalTo: leadingView.trailingAnchor, constant: constant)
+        constraint.isActive = true
         return constraint
     }
     
@@ -172,9 +172,9 @@ public extension UIView {
      - returns: An NSLayoutConstraint object that defines an equal relationship between the attributes represented by the
      two layout anchors plus a constant offset.
      */
-    func snapVertically(bottomView bottomView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
-        let constraint = bottomAnchor.constraintEqualToAnchor(bottomView.topAnchor, constant: constant)
-        constraint.active = true
+    func snapVertically(bottomView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
+        let constraint = bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: constant)
+        constraint.isActive = true
         return constraint
     }
     
@@ -186,9 +186,9 @@ public extension UIView {
      - returns: An NSLayoutConstraint object that defines an equal relationship between the attributes represented by the
      two layout anchors plus a constant offset.
      */
-    func snapVertically(topView topView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
-        let constraint = topAnchor.constraintEqualToAnchor(topView.bottomAnchor, constant: constant)
-        constraint.active = true
+    func snapVertically(topView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint {
+        let constraint = topAnchor.constraint(equalTo: topView.bottomAnchor, constant: constant)
+        constraint.isActive = true
         return constraint
     }
     
@@ -200,16 +200,16 @@ public extension UIView {
      - parameter offset: The constant offset for the constraint.
      - returns: List of applied NSLayoutConstraints in following order if applicable: CenterX, CenterY
      */
-    func align(axis: Axis, toView: UIView, offset: UIOffset = UIOffsetZero) -> [NSLayoutConstraint] {
+    func align(_ axis: Axis, toView: UIView, offset: UIOffset = UIOffset.zero) -> [NSLayoutConstraint] {
         translatesAutoresizingMaskIntoConstraints = false
         var constraintList = [NSLayoutConstraint]()
-        if axis == .CenterXAndY || axis == .CenterX {
-            constraintList.append(centerXAnchor.constraintEqualToAnchor(toView.centerXAnchor, constant: offset.horizontal))
+        if axis == .centerXAndY || axis == .centerX {
+            constraintList.append(centerXAnchor.constraint(equalTo: toView.centerXAnchor, constant: offset.horizontal))
         }
-        if axis == .CenterXAndY || axis == .CenterY {
-            constraintList.append(centerYAnchor.constraintEqualToAnchor(toView.centerYAnchor, constant: offset.vertical))
+        if axis == .centerXAndY || axis == .centerY {
+            constraintList.append(centerYAnchor.constraint(equalTo: toView.centerYAnchor, constant: offset.vertical))
         }
-        constraintList.forEach { $0.active = true }
+        constraintList.forEach { $0.isActive = true }
         return constraintList
     }
     
@@ -219,7 +219,7 @@ public extension UIView {
      - parameter axis: Specfies which or all alignments to apply constraints
      - returns: List of applied NSLayoutConstraints in following order: CenterX, CenterY
      */
-    func alignToSuperView(axis: Axis, offset: UIOffset = UIOffsetZero) -> [NSLayoutConstraint] {
+    func alignToSuperView(_ axis: Axis, offset: UIOffset = UIOffset.zero) -> [NSLayoutConstraint] {
         guard let superview = superview else { return [NSLayoutConstraint]() }
         return align(axis, toView: superview, offset: offset)
     }
