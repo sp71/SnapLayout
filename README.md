@@ -20,11 +20,11 @@ Concise API for iOS Auto Layout. SnapLayout extends `UIView` to deliver a list o
 SnapLayout's current release supports iOS >= 9.0
 
 * Xcode
-  * Language Support: **Swift** *(2.3)*
-  * Fully Compatible With: **Xcode 8.0**
+  * Language Support: **Swift** *(3.0)*
+  * Fully Compatible With: **Xcode 8.0 and higher**
   * Minimum Supported Version: **Xcode 8.0**
 * iOS
-  * Fully Compatible With: **iOS 9.0**
+  * Fully Compatible With: **iOS 9.0 and above**
   * Minimum Deployment Target: **iOS 9.0**
 
 ### Installation
@@ -39,32 +39,37 @@ pod "SnapLayout"
 ## Usage
 ### [`UIView`](SnapLayout/Classes/SnapLayout.swift) extension methods
 ```swift
-func pinToSuperview(edges: UIRectEdge, insets: UIEdgeInsets = UIEdgeInsetsZero) -> [NSLayoutConstraint]
-func anchorHeightToSuperview(multiplier multiplier: CGFloat = 0, constant: CGFloat = 0) -> NSLayoutConstraint
-func anchorWidthToSuperview(multiplier multiplier: CGFloat, constant: CGFloat = 0) -> NSLayoutConstraint
-func anchorSizeToSuperView(size: CGSize) -> [NSLayoutConstraint]
-func anchorWidth(constant constant: CGFloat) -> NSLayoutConstraint
-func anchorHeight(constant constant: CGFloat) -> NSLayoutConstraint
-func anchorSize(size: CGSize) -> [NSLayoutConstraint]
-func snapHorizontally(trailingView trailingView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint
-func snapHorizontally(leadingView leadingView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint
-func snapVertically(bottomView bottomView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint
-func snapVertically(topView topView: UIView, constant: CGFloat = 0) -> NSLayoutConstraint
-func alignToSuperView(axis: Axis, offset: UIOffset = UIOffsetZero) -> [NSLayoutConstraint]
-func align(axis: Axis, toView: UIView, offset: UIOffset = UIOffsetZero) -> [NSLayoutConstraint]
+func pinToSuperview(top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil) -> ConstraintManager
+func pinToSuperview(_ insets: ConstraintEdgeInsets) -> ConstraintManager
+func pin(view: UIView, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil) -> ConstraintManager
+func pin(view: UIView, insets: ConstraintEdgeInsets) -> ConstraintManager
+func anchorWidth(constant: CGFloat) -> ConstraintManager
+func anchorWidth(view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0) -> ConstraintManager
+func anchorWidthToSuperview(multiplier: CGFloat = 1, constant: CGFloat = 0) -> ConstraintManager
+func anchorHeight(constant: CGFloat = 0) -> ConstraintManager
+func anchorHeight(view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0) -> ConstraintManager
+func anchorHeightToSuperview(multiplier: CGFloat = 0, constant: CGFloat = 0) -> ConstraintManager
+func anchorSizeToSuperView(_ size: CGSize) -> ConstraintManager
+func anchorSize(view: UIView) -> ConstraintManager
+func anchorSize(size: CGSize) -> ConstraintManager
+func snapHorizontally(trailingView: UIView, constant: CGFloat = 0) -> ConstraintManager
+func snapHorizontally(leadingView: UIView, constant: CGFloat = 0) -> ConstraintManager
+func snapVertically(bottomView: UIView, constant: CGFloat = 0) -> ConstraintManager
+func snapVertically(topView: UIView, constant: CGFloat = 0) -> ConstraintManager
+func align(_ axis: ConstraintAxis, toView: UIView, offset: UIOffset = .zero) -> ConstraintManager
+func alignToSuperView(_ axis: ConstraintAxis, offset: UIOffset = .zero) -> ConstraintManager
 ```
 
 ### Sample Code
 
 ```swift
-view.pinToSuperview(.All)
-view.pinToSuperview(.Left)
-view.pinToSuperview([.Top, .Left, .Right], insets: UIEdgeInsets(top: 16, left: 8, bottom: 0, right: -8))
+view.pinToSuperview(.zero)
+view.pinToSuperview(ConstraintEdgeInsets(top: 50, leading: 8))
 view.anchorHeightToSuperview()
 view.anchorHeightToSuperview(multiplier: 0.5)
 view.anchorHeightToSuperview(multiplier: 0.5, constant: 20)
 view.anchorWidthToSuperview(constant: 20)
-view.anchorSizeToSuperView(size: CGSize(width: 40, height:60))
+view.anchorSizeToSuperview(size: CGSize(width: 40, height:60))
 view.anchorWidth(20)
 view.anchorHeight(30)
 view.anchorSize(CGSize(width: 20, height:30))
@@ -72,17 +77,18 @@ view.snapHorizontally(trailingView: view2)
 view.snapHorizontally(trailingView: view2, constant: 8)
 view.snapVertically(bottomView: view2, constant: 8)
 view.snapVertically(topView: view2)
-view.align(.CenterX, toView: view2)
-view.align(.CenterXAndY, toView: view2, offset: UIOffset(horizontal: 10, vertical: 5))
-view.alignToSuperView(.CenterY)
-view.alignToSuperView(.CenterY, offset: UIOffset(horizontal: 0, vertical: 5))
+view.align(.centerX, toView: view2)
+view.align(.centerXAndY, toView: view2, offset: UIOffset(horizontal: 10, vertical: 5))
+view.alignToSuperView(.centerY)
+view.alignToSuperView(.centerY, offset: UIOffset(horizontal: 0, vertical: 5))
 ```
 
 ### Notes
-For conciseness, offset values are only applied to respective edges or aligns provided from first parameter.
-For example, since the .Bottom was not provided within the first paramater, the bottom inset value is irrelevant
-```swift 
-view.pinToSuperview([.Top, .Left, .Right], insets: UIEdgeInsets(top: 16, left: 8, bottom: 0, right: -8))
+All of the UIView Extensions return a `ConstraintManager`. This holds all of the applied constraints. Imagine a scenario where a view has a height constraint and pinned to the top, leading, and trailing of super view. Both of these constraints exist within their respective `ConstraintManager`. This manager also has a handy `append` function which combines another constraint manager with itself. In the following example, `loginConstraintManager` holds many initalized properties so a developer can quickly access the `height`, `top`, `leading`, and `trailing` constraints through `loginConstraintManager `.
+
+```swift
+let loginConstraintManager = loginButton.anchorHeightToSuperview()
+loginConstraintManager.append(loginButton.pinToSuperview(top: 8, leading: 8, trailing: 8))
 ```
 
 ### Example App
