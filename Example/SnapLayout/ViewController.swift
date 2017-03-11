@@ -32,14 +32,14 @@ internal final class ViewController: UIViewController {
         containerView.backgroundColor = UIColor(red: 219/255, green: 165/255, blue: 182/255, alpha: 1)
         view.addSubview(containerView)
         // Container View will now encompass entire view real estate
-        _ = containerView.pinToSuperview(.zero)
+        containerView.pinToSuperview(.zero)
     }
     
     /// Setup Container View
     fileprivate func setupEmojiLabel() {
         emojiLabel.text = emojiList()
         containerView.addSubview(emojiLabel)
-        _ = emojiLabel.pinToSuperview(Constants.emojiLabelEdgeInsets)
+        emojiLabel.pinToSuperview(Constants.emojiLabelEdgeInsets)
         emojiLabel.numberOfLines = 0
     }
     
@@ -51,8 +51,8 @@ internal final class ViewController: UIViewController {
         snapLabel.font = UIFont(name: "Avenir-Book", size: 24)
         containerView.addSubview(snapLabel)
         // label will be below emojiTextView and aligned horizontally relative to super view
-        _ = snapLabel.snapVertically(topView: emojiLabel)
-        _ = snapLabel.alignToSuperView(.centerX)
+        snapLabel.snapVertically(topView: emojiLabel)
+        snapLabel.alignToSuperView(.centerX)
     }
     
     /**
