@@ -10,12 +10,12 @@ Concise API for iOS Auto Layout. SnapLayout extends `UIView` to deliver a list o
 Imagine applying any or all of the following constraints in one line of code: top, leading, trailing, bottom, width, height, centerX, centerY. This is possible with `SnapLayout`.
 
 ### Table of Contents
-1. [Setup](#setup)
-  * [Requirements](#requirements)
-  * [Installation](#installation)
-2. [Usage](#usage)
-  * [Sample Code](#sample-Code)
-  * [Example App](#example-app)
+ 1. [Setup](#setup)
+	* [Requirements](#requirements)
+	* [Installation](#installation)
+ 1. [Usage](#usage)
+	* [Sample Code](#sample-code)
+	* [Example App](#example-app)
 
 ## Setup
 ### Requirements
@@ -36,15 +36,16 @@ it, simply add the following line to your Podfile:
 pod "SnapLayout"
 ```
 
-## Overview
-SnapLayout offers many `UIView` extension methods available in the [source files](SnapLayout/SnapLayout/Classes/SnapLayout.swift). 
+## Usage
+
+### Overview 
 
 * All methods are prefixed with `snap` for quick Xcode autocomplete.
 * Directly uses NSLayoutAnchor under the hood so the API is developer friendly
-* Any view using `SnapLayout` will not only have its `translatesAutoresizingMaskIntoConstraints` set to false, but also have its constraint activated.
+* Any view using `SnapLayout` will not only have its `translatesAutoresizingMaskIntoConstraints` set to `false`, but also have its constraint activated.
 * Amazing constraint situations such as snapping a button to the label on top of it is an effortless process now: `button.snapVertically(topView: label, constant: 8)`
 
-## Usage
+
 ### [`UIView`](SnapLayout/Classes/SnapLayout.swift) extension methods
 ```swift
 func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: Bool? = nil, centerY: Bool? = nil)
