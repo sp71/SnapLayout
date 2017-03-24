@@ -12,7 +12,7 @@ import SnapLayout
 internal final class ViewController: UIViewController {
     
     struct Constants {
-        static let emojiLabelEdgeInsets = ConstraintEdgeInsets(top: 50, leading: 8, trailing: -8)
+        static let emojiLabelConstraintConstants = ConstraintConstants(top: 50, leading: 8, trailing: -8)
     }
     
     /// Container view encompassing all subviews of View Controller
@@ -32,14 +32,14 @@ internal final class ViewController: UIViewController {
         containerView.backgroundColor = UIColor(red: 219/255, green: 165/255, blue: 182/255, alpha: 1)
         view.addSubview(containerView)
         // Container View will now encompass entire view real estate
-        containerView.pinToSuperview(.zero)
+        containerView.snap(constants: .zero)
     }
     
     /// Setup Container View
     fileprivate func setupEmojiLabel() {
         emojiLabel.text = emojiList()
         containerView.addSubview(emojiLabel)
-        emojiLabel.pinToSuperview(Constants.emojiLabelEdgeInsets)
+        emojiLabel.snap(constants: Constants.emojiLabelConstraintConstants)
         emojiLabel.numberOfLines = 0
     }
     
@@ -52,7 +52,7 @@ internal final class ViewController: UIViewController {
         containerView.addSubview(snapLabel)
         // label will be below emojiTextView and aligned horizontally relative to super view
         snapLabel.snapVertically(topView: emojiLabel)
-        snapLabel.alignToSuperView(.centerX)
+        snapLabel.snap(centerX: true)
     }
     
     /**

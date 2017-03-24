@@ -6,59 +6,8 @@
 //
 //
 
-/// Defines Constraint Axis alignment
-public enum ConstraintAxis {
-    
-    /// Center only the X axis
-    case centerX
-    
-    /// Center only the Y axis
-    case centerY
-    
-    /// Center the X and Y axis
-    case centerXAndY
-}
-
-/// Constraint Edge that can be applied
-public struct ConstraintEdge {
-    
-    /// Applies Constraint for top
-    public var top: CGFloat
-    
-    /// Applies Constraint for leading
-    public var leading: CGFloat
-    
-    /// Applies Constraint for bottom
-    public var bottom: CGFloat
-    
-    /// Applies Constraint for trailing
-    public var trailing: CGFloat
-    
-    /// Initalizes a Constraint Edge with all values set to 0
-    public init() {
-        top = 0
-        leading = 0
-        bottom = 0
-        trailing = 0
-    }
-    
-    /// Initalizes ConstraintEdge with specified arguments
-    ///
-    /// - Parameters:
-    ///   - top: Constant Value to apply with top
-    ///   - leading: Constant Value to apply with leading
-    ///   - bottom: Constant Value to apply with bottom
-    ///   - trailing: Constant Value to apply with trailing
-    public init(top: CGFloat, leading: CGFloat, bottom: CGFloat, trailing: CGFloat) {
-        self.top = top
-        self.leading = leading
-        self.bottom = bottom
-        self.trailing = trailing
-    }
-}
-
-/// Constraint Edge Inset to apply to each Constraint Edge
-public struct ConstraintEdgeInsets {
+/// Constants to apply to each Constraint
+public struct ConstraintConstants {
     
     /// Constant value associated with top constraint. If nil, no constraint is applied.
     public var top: CGFloat?
@@ -72,14 +21,33 @@ public struct ConstraintEdgeInsets {
     /// Constant value associated with trailing constraint. If nil, no constraint is applied.
     public var trailing: CGFloat?
     
-    /// Constant value associated with zero for all values
-    public static let zero = ConstraintEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
+    /// Constant value associated with width constraint. If nil, no constraint is applied.
+    public var width: CGFloat?
     
-    public init(top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil) {
+    /// Constant value associated with height constraint. If nil, no constraint is applied.
+    public var height: CGFloat?
+    
+    /// Value associated with centerX constraint. Constraint only applied if true.
+    public var centerX: Bool?
+    
+    /// Value associated with centerY constraint. Constraint only applied if true.
+    public var centerY: Bool?
+
+    /// Constant value associated with zero for top, leading, bottom, and trailing. 
+    /// No width nor height nor centerX not centerY constraint is applied.
+    public static let zero = ConstraintConstants(top: 0, leading: 0, bottom: 0, trailing: 0)
+    
+    public init(top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil,
+                trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil,
+                centerX: Bool? = nil, centerY: Bool? = nil) {
         self.top = top
         self.leading = leading
         self.bottom = bottom
         self.trailing = trailing
+        self.width = width
+        self.height = height
+        self.centerX = centerX
+        self.centerY = centerY
     }
     
 }
@@ -87,17 +55,17 @@ public struct ConstraintEdgeInsets {
 /// Manages Constraints for View
 public class ConstraintManager {
     
+    /// Top Constraint
+    public var top: NSLayoutConstraint?
+
     /// Leading Constraint
     public var leading: NSLayoutConstraint?
     
-    /// Top Constraint
-    public var top: NSLayoutConstraint?
+    /// Bottom Constraint
+    public var bottom: NSLayoutConstraint?
     
     /// Trailing Constraint
     public var trailing: NSLayoutConstraint?
-    
-    /// Bottom Constraint
-    public var bottom: NSLayoutConstraint?
     
     /// Width Constraint
     public var width: NSLayoutConstraint?
@@ -115,9 +83,11 @@ public class ConstraintManager {
     public init() {}
     
     /// Update Constraint Manager with specified constraint manager argument
-    /// All properties from argument object will be applied to the calling constraint manager
+    /// All properties from argument object will override to the calling constraint manager
+    ///
     /// - Parameter otherCM: Other Constraint Manager to update calling constraint manager properties with
-    @discardableResult public func append(_ otherCM: ConstraintManager) -> ConstraintManager {
+    @discardableResult
+    public func append(_ otherCM: ConstraintManager) -> ConstraintManager {
         if let otherLeading = otherCM.leading {
             leading = otherLeading
         }
@@ -149,45 +119,22 @@ public class ConstraintManager {
 /// Extension Methods for convenience
 public extension UIView {
     
-    // MARK: - Pin
-    
-    /// Pin to superview based on specified arguments. Nil parameters will not apply constraints
-    /// - Note: If a view does not contain a superview, a ConstraintManager with all properties set to nil will be returned
-    /// - Parameters:
-    ///   - top: Constant to apply to top constraint from topAnchor
-    ///   - leading: Constant to apply from leadingAnchor
-    ///   - bottom: Constant to apply from bottomAnchor
-    ///   - trailing: Constant to apply from trailingAnchor
-    /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func pinToSuperview(top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil) -> ConstraintManager {
-        guard let superview = superview else {
-            return ConstraintManager()
-        }
-        return pin(view: superview, top: top, leading: leading, bottom: bottom, trailing: trailing)
-    }
-    
-    
-    /// Pin to superview based on constraintEdgeInsets parameter. Nil properties of ConstraintEdgeInsets will not apply constraints
-    ///
-    /// - Parameter constraintEdgeInsets: Manages edge insets to apply to view
-    /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func pinToSuperview(_ insets: ConstraintEdgeInsets) -> ConstraintManager {
-        return pinToSuperview(top: insets.top,
-                              leading: insets.leading,
-                              bottom: insets.bottom,
-                              trailing: insets.trailing)
-    }
-    
-    /// Pin to view based on argument values. Nil properties will not apply constraints.
+    /// Snap to view based on argument values.
     ///
     /// - Parameters:
-    ///   - view: UIView to to apply constraints with
-    ///   - top: Constant to apply to top constraint from topAnchor
-    ///   - leading: Constant to apply from leadingAnchor
-    ///   - bottom: Constant to apply from bottomAnchor
-    ///   - trailing: Constant to apply from trailingAnchor
+    ///   - view: UIView to to apply constraints with (defaulted to superview if nil)
+    ///   - top: Constant to apply to top constraint from topAnchor (if nil, not applied)
+    ///   - leading: Constant to apply from leadingAnchor  (if nil, not applied)
+    ///   - bottom: Constant to apply from bottomAnchor  (if nil, not applied)
+    ///   - trailing: Constant to apply from trailingAnchor  (if nil, not applied)
+    ///   - width: Constant to apply from widthAnchor  (if nil, not applied)
+    ///   - height: Constant to apply from heightAnchor  (if nil, not applied)
     /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func pin(view: UIView, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil) -> ConstraintManager {
+    @discardableResult
+    func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil,
+              trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: Bool? = nil,
+              centerY: Bool? = nil) -> ConstraintManager {
+        guard let view = view ?? superview else { return ConstraintManager() }
         translatesAutoresizingMaskIntoConstraints = false
         var constraintManager = ConstraintManager()
         if let top = top {
@@ -202,27 +149,49 @@ public extension UIView {
         if let trailing = trailing {
             constraintManager.trailing = trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: trailing)
         }
-        [constraintManager.leading, constraintManager.trailing, constraintManager.top, constraintManager.bottom].forEach { $0?.isActive = true }
+        if let width = width {
+            constraintManager.width = widthAnchor.constraint(equalToConstant: width)
+        }
+        if let height = height {
+            constraintManager.height = widthAnchor.constraint(equalToConstant: height)
+        }
+        if let centerX = centerX, centerX {
+            constraintManager.centerX = centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        }
+        if let centerY = centerY, centerY {
+            constraintManager.centerY = centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        }
+        [constraintManager.top, constraintManager.leading, constraintManager.bottom, constraintManager.trailing,
+         constraintManager.width, constraintManager.height, constraintManager.centerX, constraintManager.centerY].forEach { $0?.isActive = true }
         return constraintManager
     }
     
-    /// Pin to view based on insets values. Nil properties within ConstraintEdgeInsets will not apply constraints.
+    /// Snap to view based on argument values.
+    /// Nil properties within ConstraintConstants will not apply constraints.
     ///
     /// - Parameters:
-    ///   - view: UIView to to apply constraints with
-    ///   - insets: ConstraintEdgeInsets to apply
+    ///   - view: UIView to to apply constraints with (defaulted to superview if nil)
+    ///   - constants: ConstraintConstants to apply
     /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func pin(view: UIView, insets: ConstraintEdgeInsets) -> ConstraintManager {
-        return pin(view: view, top: insets.top, leading: insets.leading, bottom: insets.bottom, trailing: insets.trailing)
+    @discardableResult
+    func snap(to view: UIView? = nil, constants: ConstraintConstants) -> ConstraintManager {
+        return snap(to: view,
+                    top: constants.top,
+                    leading: constants.leading,
+                    bottom: constants.bottom,
+                    trailing: constants.trailing,
+                    width: constants.width,
+                    height: constants.height,
+                    centerX: constants.centerX,
+                    centerY: constants.centerY)
     }
-    
-    // MARK: - Size
     
     /// Apply width anchor to calling view with a specified constant
     ///
     /// - Parameter constant: Constant value to apply upon constraint
     /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func anchorWidth(constant: CGFloat) -> ConstraintManager {
+    @discardableResult
+    func snapWidth(constant: CGFloat) -> ConstraintManager {
         translatesAutoresizingMaskIntoConstraints = false
         let constraintManager = ConstraintManager()
         constraintManager.width = widthAnchor.constraint(equalToConstant: constant)
@@ -230,47 +199,28 @@ public extension UIView {
         return constraintManager
     }
     
-    /// Apply width anchor between calling view and argument view with specified multiplier and constant
-    /// - Parameters:
-    ///   - view: UIView to apply constraint with
-    ///   - multiplier: Multiplier value to apply constraint with (default 1)
-    ///   - constant: Constant value to apply constraint with (default 0)
-    /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func anchorWidth(view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0) -> ConstraintManager {
-        translatesAutoresizingMaskIntoConstraints = false
-        let constraintManager = ConstraintManager()
-        constraintManager.width = widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier, constant: constant)
-        constraintManager.width?.isActive = true
-        return constraintManager
-    }
-    
-    /**
-     Anchor width relative to superview based on multipler & constant
-     
-     - parameter multiplier: multiplier constant for the constraint.
-     - parameter constant: offset constant for this relationship.
-     - returns: An NSLayoutConstraint object that defines the attribute represented by this layout anchor as equal to the attribute represented by the anchor parameter multiplied by the m constant plus the constant c
-     */
-    
-    
-    /// Apply width anchor between calling view and superview with specified multiplier and constant
+    /// Apply width anchor between calling view and argument view with specified multiplier
     ///
     /// - Parameters:
+    ///   - view: UIView to apply constraint with (defaulted to superview if nil)
     ///   - multiplier: Multiplier value to apply constraint with (default 1)
-    ///   - constant: Constant value to apply constraint with (default 0)
     /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func anchorWidthToSuperview(multiplier: CGFloat = 1, constant: CGFloat = 0) -> ConstraintManager {
-        guard let superview = superview else {
-            return ConstraintManager()
-        }
-        return anchorWidth(view: superview, multiplier: multiplier, constant: constant)
+    @discardableResult
+    func snapWidth(to view: UIView? = nil, multiplier: CGFloat = 1) -> ConstraintManager {
+        guard let view = view ?? superview else { return ConstraintManager() }
+        translatesAutoresizingMaskIntoConstraints = false
+        let constraintManager = ConstraintManager()
+        constraintManager.width = widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier)
+        constraintManager.width?.isActive = true
+        return constraintManager
     }
     
     /// Apply height anchor to calling view with a specified constant
     ///
     /// - Parameter constant: Constant value to apply upon constraint
     /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func anchorHeight(constant: CGFloat = 0) -> ConstraintManager {
+    @discardableResult
+    func snapHeight(constant: CGFloat) -> ConstraintManager {
         translatesAutoresizingMaskIntoConstraints = false
         var constraintManager = ConstraintManager()
         constraintManager.height = heightAnchor.constraint(equalToConstant: constant)
@@ -278,57 +228,30 @@ public extension UIView {
         return constraintManager
     }
     
-    /// Apply height anchor between calling view and argument view with specified multiplier and constant
+    /// Apply height anchor between calling view and argument view with specified multiplier
+    ///
     /// - Parameters:
-    ///   - view: UIView to apply constraint with
+    ///   - view: UIView to apply constraint with (defaulted to superview if nil)
     ///   - multiplier: Multiplier value to apply constraint with (default 1)
-    ///   - constant: Constant value to apply constraint with (default 0)
     /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func anchorHeight(view: UIView, multiplier: CGFloat = 1, constant: CGFloat = 0) -> ConstraintManager {
+    @discardableResult
+    func snapHeight(to view: UIView? = nil, multiplier: CGFloat = 1) -> ConstraintManager {
+        guard let view = view ?? superview else { return ConstraintManager() }
         translatesAutoresizingMaskIntoConstraints = false
         let constraintManager =  ConstraintManager()
-        constraintManager.height = heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier, constant: constant)
+        constraintManager.height = heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier)
         constraintManager.height?.isActive = true
         return constraintManager
-    }
-    
-    /// Apply height anchor between calling view and superview with specified multiplier and constant
-    ///
-    /// - Parameters:
-    ///   - multiplier: Multiplier value to apply constraint with (default 1)
-    ///   - constant: Constant value to apply constraint with (default 0)
-    /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func anchorHeightToSuperview(multiplier: CGFloat = 0, constant: CGFloat = 0) -> ConstraintManager {
-        guard let superview = superview else {
-            return ConstraintManager()
-        }
-        return anchorHeight(view: superview, multiplier: multiplier, constant: constant)
-    }
-    
-    /// Anchor size relative to superview based on CGSize given. Applies width anchor and height anchor
-    ///
-    /// - Parameter size: CGSize specifying width and height
-    /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func anchorSizeToSuperview(_ size: CGSize) -> ConstraintManager {
-        return anchorWidthToSuperview(multiplier: size.width)
-            .append(anchorHeightToSuperview(multiplier: size.height))
-    }
-    
-    /// Anchor size relative to specified view. Applies width anchor and height anchor
-    ///
-    /// - Parameter size: CGSize specifying width and height
-    /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func anchorSize(view: UIView) -> ConstraintManager {
-        return anchorWidth(view: view).append(anchorHeight(view: view))
     }
     
     /// Anchor size by applying width anchor and height anchor
     ///
     /// - Parameter size: CGSize specifying width and height
     /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func anchorSize(size: CGSize) -> ConstraintManager {
-        return anchorWidth(constant: size.width)
-            .append(anchorHeight(constant: size.height))
+    @discardableResult
+    func snapSize(size: CGSize) -> ConstraintManager {
+        return snapWidth(constant: size.width)
+            .append(snapHeight(constant: size.height))
     }
     
     // MARK: - Snap Horizontally/Vertically
@@ -339,7 +262,8 @@ public extension UIView {
     ///   - trailingView: View who will be shown as the trailingView
     ///   - constant: Constant value to apply constraint with (default 0)
     /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func snapHorizontally(trailingView: UIView, constant: CGFloat = 0) -> ConstraintManager {
+    @discardableResult
+    func snapHorizontally(trailingView: UIView, constant: CGFloat = 0) -> ConstraintManager {
         translatesAutoresizingMaskIntoConstraints = false
         let constraintManager = ConstraintManager()
         constraintManager.trailing = trailingAnchor.constraint(equalTo: trailingView.leadingAnchor, constant: constant)
@@ -353,7 +277,8 @@ public extension UIView {
     ///   - leadingView: View who will be shown as the leadingView
     ///   - constant: Constant value to apply constraint with (default 0)
     /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func snapHorizontally(leadingView: UIView, constant: CGFloat = 0) -> ConstraintManager {
+    @discardableResult
+    func snapHorizontally(leadingView: UIView, constant: CGFloat = 0) -> ConstraintManager {
         translatesAutoresizingMaskIntoConstraints = false
         let constraintManager = ConstraintManager()
         constraintManager.leading = leadingAnchor.constraint(equalTo: leadingView.trailingAnchor, constant: constant)
@@ -367,7 +292,8 @@ public extension UIView {
     ///   - bottomView: View who will be shown as the bottomView
     ///   - constant: Constant value to apply constraint with (default 0)
     /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func snapVertically(bottomView: UIView, constant: CGFloat = 0) -> ConstraintManager {
+    @discardableResult
+    func snapVertically(bottomView: UIView, constant: CGFloat = 0) -> ConstraintManager {
         let constraintManager = ConstraintManager()
         constraintManager.bottom = bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: constant)
         constraintManager.bottom?.isActive = true
@@ -380,45 +306,12 @@ public extension UIView {
     ///   - topView: View who will be shown as the bottomView
     ///   - constant: Constant value to apply constraint with (default 0)
     /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func snapVertically(topView: UIView, constant: CGFloat = 0) -> ConstraintManager {
+    @discardableResult
+    func snapVertically(topView: UIView, constant: CGFloat = 0) -> ConstraintManager {
         let constraintManager = ConstraintManager()
         constraintManager.top = topAnchor.constraint(equalTo: topView.bottomAnchor, constant: constant)
         constraintManager.top?.isActive = true
         return constraintManager
     }
     
-    // MARK: - Align
-    
-    /// Center constraints relative to another view based on axis parameters and offset provided
-    ///
-    /// - Parameters:
-    ///   - axis: Specfies which or all alignments to apply constraints
-    ///   - toView: View to apply constraints with
-    ///   - offset: Offset to apply with
-    /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func align(_ axis: ConstraintAxis, toView: UIView, offset: UIOffset = .zero) -> ConstraintManager {
-        translatesAutoresizingMaskIntoConstraints = false
-        var constraintManager = ConstraintManager()
-        if axis == .centerXAndY || axis == .centerX {
-            constraintManager.centerX = centerXAnchor.constraint(equalTo: toView.centerXAnchor, constant: offset.horizontal)
-        }
-        if axis == .centerXAndY || axis == .centerY {
-            constraintManager.centerY = centerYAnchor.constraint(equalTo: toView.centerYAnchor, constant: offset.vertical)
-        }
-        [constraintManager.centerX, constraintManager.centerY].forEach { $0?.isActive = true }
-        return constraintManager
-    }
-    
-    /// Center constraints relative to superview based on axis parameters and offset provided
-    ///
-    /// - Parameters:
-    ///   - axis: Specfies which or all alignments to apply constraints
-    ///   - offset: Offset to apply with
-    /// - Returns: ConstraintManager holding all the values associated with constraints
-    @discardableResult func alignToSuperView(_ axis: ConstraintAxis, offset: UIOffset = .zero) -> ConstraintManager {
-        guard let superview = superview else {
-            return ConstraintManager()
-        }
-        return align(axis, toView: superview)
-    }
 }
