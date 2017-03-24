@@ -8,14 +8,17 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SnapLayout'
-  s.version          = '1.0.2'
+  s.version          = '1.0.4'
   s.summary          = 'Concise API for iOS Auto Layout'
 
 s.description  = <<-DESC
 # SnapLayout
-Concise API for iOS Auto Layout. SnapLayout extends UIView to deliver a list of APIs to improve readability while 
-also shortening constraint code. Internally using AutoLayout to provide the best experience. With SnapLayout, 
-developers can pin, anchor, snap, or align views easily!
+Concise API for iOS Auto Layout. SnapLayout extends `UIView` to deliver a list of APIs to improve
+ readability while also shortening constraint code. Internally uses AutoLayout to provide the best 
+ experience. With SnapLayout, developers can remove boilerplate code but not at the cost of readability.
+
+Imagine applying any or all of the following constraints in one line of code: top, leading, trailing, 
+bottom, width, height, centerX, centerY. This is possible with `SnapLayout`.
 DESC
 
   s.homepage         = 'https://github.com/sp71/SnapLayout'
