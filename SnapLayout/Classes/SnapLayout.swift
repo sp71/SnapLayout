@@ -153,7 +153,7 @@ public extension UIView {
             constraintManager.width = widthAnchor.constraint(equalToConstant: width)
         }
         if let height = height {
-            constraintManager.height = widthAnchor.constraint(equalToConstant: height)
+            constraintManager.height = heightAnchor.constraint(equalToConstant: height)
         }
         if let centerX = centerX, centerX {
             constraintManager.centerX = centerXAnchor.constraint(equalTo: view.centerXAnchor)
