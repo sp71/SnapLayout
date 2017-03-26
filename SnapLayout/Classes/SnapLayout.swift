@@ -129,40 +129,55 @@ public extension UIView {
     ///   - trailing: Constant to apply from trailingAnchor  (if nil, not applied)
     ///   - width: Constant to apply from widthAnchor  (if nil, not applied)
     ///   - height: Constant to apply from heightAnchor  (if nil, not applied)
+    ///   - centerX: Boolean determining if centerX should be applied  (if nil, not applied)
+    ///   - centerY: Boolean determining if centerY should be applied  (if nil, not applied)
+    /// - Note: width and height are not in respect to superview, but always to self
     /// - Returns: ConstraintManager holding all the values associated with constraints
     @discardableResult
     func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil,
               trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: Bool? = nil,
               centerY: Bool? = nil) -> ConstraintManager {
-        guard let view = view ?? superview else { return ConstraintManager() }
         translatesAutoresizingMaskIntoConstraints = false
         var constraintManager = ConstraintManager()
-        if let top = top {
-            constraintManager.top = topAnchor.constraint(equalTo: view.topAnchor, constant: top)
-        }
-        if let leading = leading {
-            constraintManager.leading = leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leading)
-        }
-        if let bottom = bottom {
-            constraintManager.bottom = bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottom)
-        }
-        if let trailing = trailing {
-            constraintManager.trailing = trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: trailing)
-        }
         if let width = width {
             constraintManager.width = widthAnchor.constraint(equalToConstant: width)
+            constraintManager.width?.isActive = true
         }
         if let height = height {
             constraintManager.height = heightAnchor.constraint(equalToConstant: height)
+            constraintManager.height?.isActive = true
+        }
+        guard let view = view ?? superview else { return constraintManager }
+        if let top = top {
+            constraintManager.top = topAnchor.constraint(equalTo: view.topAnchor, constant: top)
+            constraintManager.top?.isActive = true
+        }
+        if let leading = leading {
+            constraintManager.leading = leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leading)
+            constraintManager.leading?.isActive = true
+        }
+        if let bottom = bottom {
+            constraintManager.bottom = bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottom)
+            constraintManager.bottom?.isActive = true
+        }
+        if let trailing = trailing {
+            constraintManager.trailing = trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: trailing)
+            constraintManager.trailing?.isActive = true
         }
         if let centerX = centerX, centerX {
             constraintManager.centerX = centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            constraintManager.centerX?.isActive = true
         }
         if let centerY = centerY, centerY {
             constraintManager.centerY = centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            constraintManager.centerY?.isActive = true
         }
-        [constraintManager.top, constraintManager.leading, constraintManager.bottom, constraintManager.trailing,
-         constraintManager.width, constraintManager.height, constraintManager.centerX, constraintManager.centerY].forEach { $0?.isActive = true }
+        let inActiveCount = [constraintManager.width, constraintManager.height, constraintManager.top, constraintManager.leading,
+                           constraintManager.bottom, constraintManager.trailing, constraintManager.centerX,
+                           constraintManager.centerY].filter ({ $0?.isActive == false }).count
+        if inActiveCount == 0 {
+            print("SnapLayout Error - No constraint was applied for view: \(String(describing: view))")
+        }
         return constraintManager
     }
     
@@ -207,7 +222,10 @@ public extension UIView {
     /// - Returns: ConstraintManager holding all the values associated with constraints
     @discardableResult
     func snapWidth(to view: UIView? = nil, multiplier: CGFloat = 1) -> ConstraintManager {
-        guard let view = view ?? superview else { return ConstraintManager() }
+        guard let view = view ?? superview else {
+            print("SnapLayout Error - width constraint not applied")
+            return ConstraintManager()
+        }
         translatesAutoresizingMaskIntoConstraints = false
         let constraintManager = ConstraintManager()
         constraintManager.width = widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier)
@@ -236,7 +254,10 @@ public extension UIView {
     /// - Returns: ConstraintManager holding all the values associated with constraints
     @discardableResult
     func snapHeight(to view: UIView? = nil, multiplier: CGFloat = 1) -> ConstraintManager {
-        guard let view = view ?? superview else { return ConstraintManager() }
+        guard let view = view ?? superview else {
+            print("SnapLayout Error - height constraint not applied")
+            return ConstraintManager()
+        }
         translatesAutoresizingMaskIntoConstraints = false
         let constraintManager =  ConstraintManager()
         constraintManager.height = heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier)
