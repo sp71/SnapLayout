@@ -174,7 +174,7 @@ public extension UIView {
         }
         let inActiveCount = [constraintManager.width, constraintManager.height, constraintManager.top, constraintManager.leading,
                            constraintManager.bottom, constraintManager.trailing, constraintManager.centerX,
-                           constraintManager.centerY].filter ({ $0?.isActive == false }).count
+                           constraintManager.centerY].filter ({ $0?.isActive == true }).count
         if inActiveCount == 0 {
             print("SnapLayout Error - No constraint was applied for view: \(String(describing: view))")
         }
