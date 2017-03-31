@@ -43,44 +43,41 @@ pod "SnapLayout"
 * All methods are prefixed with `snap` for quick Xcode autocomplete.
 * Directly uses NSLayoutAnchor under the hood so the API is developer friendly
 * Any view using `SnapLayout` will not only have its `translatesAutoresizingMaskIntoConstraints` set to `false`, but also have its constraint activated.
-* Amazing constraint situations such as snapping a button to the label on top of it is an effortless process now: `button.snapVertically(topView: label, constant: 8)`
+* Amazing constraint situations such as snapping a button to the label on top of it is an effortless process now: `button.snap(topView: label, constant: 8)`
 
 
 ### [`UIView`](SnapLayout/Classes/SnapLayout.swift) extension methods
 ```swift
-func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: Bool? = nil, centerY: Bool? = nil)
-func snap(to view: UIView? = nil, constants: ConstraintConstants) -> ConstraintManager
-func snapWidth(constant: CGFloat) -> ConstraintManager
-func snapWidth(to view: UIView? = nil, multiplier: CGFloat = 1) -> ConstraintManager
-func snapHeight(constant: CGFloat) -> ConstraintManager
-func snapHeight(to view: UIView? = nil, multiplier: CGFloat = 1) -> ConstraintManager
-func snapSize(size: CGSize) -> ConstraintManager
-func snapHorizontally(trailingView: UIView, constant: CGFloat = 0) -> ConstraintManager
-func snapHorizontally(leadingView: UIView, constant: CGFloat = 0) -> ConstraintManager
-func snapVertically(bottomView: UIView, constant: CGFloat = 0) -> ConstraintManager
-func snapVertically(topView: UIView, constant: CGFloat = 0) -> ConstraintManager
+func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: Bool? = nil, centerY: Bool? = nil) -> ConstraintManager
+func snap(to view: UIView? = nil, constants: SnapConfig) -> SnapManager
+func snapWidth(to view: UIView? = nil, multiplier: CGFloat = 1) -> SnapManager
+func snapHeight(to view: UIView? = nil, multiplier: CGFloat = 1) -> SnapManager
+func snapSize(size: CGSize) -> SnapManager
+func snap(trailingView: UIView, constant: CGFloat = 0) -> SnapManager
+func snap(leadingView: UIView, constant: CGFloat = 0) -> SnapManager
+func snap(bottomView: UIView, constant: CGFloat = 0) -> SnapManager
+func snap(topView: UIView, constant: CGFloat = 0) -> SnapManager
 ```
 
 ### Sample Code
 
 ```swift
-let buttonConstraintManager = button.snap(top: 50, leading: 50, trailing: 50, width: 30)
-buttonConstraintManager.top?.constant = 100
+let buttonSnapManager = button.snap(top: 50, leading: 50, trailing: 50, width: 30)
+buttonSnapManager.top?.constant = 100
 ```
-Not only has this button applied 4 constraints, but each individual constraint is accessible through the returned `ConstraintManager`. The beauty of SnapLayout is not only its power interface, but how easy it is to adjust returned constraints. Other API's simply return an array, but not SnapLayout. Each constraint is neatly packaged into a `ConstraintManager`.
+Not only has this button applied 4 constraints, but each individual constraint is accessible through the returned `SnapManager` type. The beauty of SnapLayout is not only its powerful API interface, but how easy it is to adjust constraints. Other API's simply return an array, but not SnapLayout. Each constraint is neatly packaged into a `SnapManager`.
 
 ### Constants
-A `ConstraintConstants` struct is also available where a developer may list all of their constraint constants beforehand and provide a `ConstraintConstants ` struct to the snap method argument.
+A `SnapConfig ` struct is also available where a developer may list all of their constraint constants beforehand and provide this type to the snap method argument.
 
 ```swift
-let buttonConstraintConstants = ConstraintConstants(top: 50, leading: 50, trailing: 50, width: 30)
-let buttonConstraintManager = button.snap(constants: buttonConstraintConstants)
-buttonConstraintManager.top?.constant = 100
+let buttonSnapConfig = SnapConfig(top: 50, leading: 50, trailing: 50, width: 30, centerX: true)
+let buttonSnapConfig = button.snap(constants: buttonConstraintConstants)
 ```
 
 ### Example App
 
-To run the example project, run `pod try SnapLayout`
+To run the example project, run `pod try SnapLayout`.
 
 ## Author
 
