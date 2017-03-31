@@ -40,7 +40,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
@@ -49,6 +50,16 @@
                BlueprintIdentifier = "607FACE41AFB9204008FA782"
                BuildableName = "SnapLayout_Tests.xctest"
                BlueprintName = "SnapLayout_Tests"
+               ReferencedContainer = "container:SnapLayout.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "05D8B3561E8E1D7C00E5819A"
+               BuildableName = "SnapLayout_ExampleTests.xctest"
+               BlueprintName = "SnapLayout_ExampleTests"
                ReferencedContainer = "container:SnapLayout.xcodeproj">
             </BuildableReference>
          </TestableReference>
