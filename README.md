@@ -1,6 +1,7 @@
 # SnapLayout
 
 [![Build Status](https://travis-ci.org/sp71/SnapLayout.svg?branch=master)](https://travis-ci.org/sp71/SnapLayout)
+[![Coverage Status](https://coveralls.io/repos/github/sp71/SnapLayout/badge.svg?branch=master)](https://coveralls.io/github/sp71/SnapLayout?branch=master)
 [![Version](https://img.shields.io/cocoapods/v/SnapLayout.svg?style=flat)](http://cocoapods.org/pods/SnapLayout)
 [![License](https://img.shields.io/cocoapods/l/SnapLayout.svg?style=flat)](http://cocoapods.org/pods/SnapLayout)
 [![Platform](https://img.shields.io/cocoapods/p/SnapLayout.svg?style=flat)](http://cocoapods.org/pods/SnapLayout)
