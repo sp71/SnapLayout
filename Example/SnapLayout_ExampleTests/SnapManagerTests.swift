@@ -12,6 +12,7 @@ import SnapLayout
 
 class SnapManagerTests: XCTestCase {
 
+    /// Test Snap Manager Constructor
     func testSnapManagerConstructor() {
         let topConstant = CGFloat(0)
         let leadingConstant = CGFloat(8)
@@ -51,6 +52,7 @@ class SnapManagerTests: XCTestCase {
         XCTAssertEqual(snapManager.centerY!.constant, 0)
     }
 
+    /// Test Snap Manager Constructor with a view who does not have a superview
     func testSnapManagerConstructorWithoutSuperView() {
         let widthConstant = CGFloat(32)
         let heightConstant = CGFloat(64)
@@ -70,6 +72,7 @@ class SnapManagerTests: XCTestCase {
         XCTAssertNil(snapManager.centerY)
     }
 
+    /// Test Snap Manager Constructor where a error would occur through logging
     func testSnapManagerConstructorError() {
         let view = UIView()
         let snapManager = view.snap(trailing: 0)
@@ -84,21 +87,30 @@ class SnapManagerTests: XCTestCase {
         XCTAssertNil(snapManager.centerY)
     }
 
+    /// Test Snap Manager Constructor with view argument
     func testSnapManagerConstructorWithSnapConfigErrorForNotSharingSameViewHeirarchy() {
         let view = UIView()
         let otherView = UIView()
+        let containerView = UIView()
+        containerView.addSubview(view)
+        containerView.addSubview(otherView)
         let snapManager = view.snap(to: otherView, constants: .zero)
         XCTAssertEqual(view.translatesAutoresizingMaskIntoConstraints, false)
-        XCTAssertNil(snapManager.top)
-        XCTAssertNil(snapManager.leading)
-        XCTAssertNil(snapManager.bottom)
-        XCTAssertNil(snapManager.trailing)
+        XCTAssertNotNil(snapManager.top)
+        XCTAssertEqual(snapManager.top!.constant, 0)
+        XCTAssertNotNil(snapManager.leading)
+        XCTAssertEqual(snapManager.leading!.constant, 0)
+        XCTAssertNotNil(snapManager.bottom)
+        XCTAssertEqual(snapManager.bottom!.constant, 0)
+        XCTAssertNotNil(snapManager.trailing)
+        XCTAssertEqual(snapManager.trailing!.constant, 0)
         XCTAssertNil(snapManager.width)
         XCTAssertNil(snapManager.height)
         XCTAssertNil(snapManager.centerX)
         XCTAssertNil(snapManager.centerY)
     }
 
+    /// Test Snap Manager Constructor with a config parameter
     func testSnapManagerConstructorWithSnapConfig() {
         let parentView = UIView()
         let childView = UIView()
@@ -138,6 +150,5 @@ class SnapManagerTests: XCTestCase {
         XCTAssertNotNil(snapManager.centerY)
         XCTAssertEqual(snapManager.centerY!.constant, 0)
     }
-
 
 }

@@ -43,11 +43,6 @@ public extension UIView {
             }
             return snapManager
         }
-        if view.superview == nil && superview == nil {
-            print("SnapLayout Error - following views do not share the same view hierarchy: \(String(describing: self))" +
-                "and \(String(describing: view))")
-            return snapManager
-        }
         if let top = top {
             snapManager.top = topAnchor.constraint(equalTo: view.topAnchor, constant: top)
             snapManager.top?.isActive = true
@@ -186,6 +181,7 @@ public extension UIView {
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
     func snap(bottomView: UIView, constant: CGFloat = 0) -> SnapManager {
+        translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
         snapManager.bottom = bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: constant)
         snapManager.bottom?.isActive = true
@@ -200,6 +196,7 @@ public extension UIView {
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
     func snap(topView: UIView, constant: CGFloat = 0) -> SnapManager {
+        translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
         snapManager.top = topAnchor.constraint(equalTo: topView.bottomAnchor, constant: constant)
         snapManager.top?.isActive = true
