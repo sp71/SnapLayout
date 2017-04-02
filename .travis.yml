@@ -9,6 +9,9 @@ podfile: Example/Podfile
 before_install:
   - gem install slather --no-ri --no-rdoc
   - gem install cocoapods
+  # Travis sometimes fails. Workaround below. Current Issue: https://github.com/travis-ci/travis-ci/issues/6675
+  - gem install simctl --no-rdoc --no-ri --no-document --quiet
+  - ruby -rsimctl -e 'SimCtl.warmup("iPhone 7", "iOS 10.0", 300)'
 #  - gem install xcpretty (prints log in pretty format)
   - pod install --project-directory=Example
 
