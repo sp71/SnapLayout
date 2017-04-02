@@ -1,0 +1,6 @@
+coverage_service: coveralls
+xcodeproj: Example/SnapLayout.xcodeproj
+workspace: Example/SnapLayout.xcworkspace
+source_directory: Pod/Classes
+scheme: SnapLayout-Example
+binary_basename: SnapLayout
