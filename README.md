@@ -74,6 +74,7 @@ button1.snap(trailingView: button2, constant: 8)
 ```
 These buttons are now side by side where button2 is now the trailingView. No longer will developers have to think which trailing constraint should apply to which leading constraint. This keeps the code lean and clean.
 
+<!-- Chaining ability not setup yet. TODO
 ### Chaining
 ```swift
 let snapManager = view.snap(top: 8, leading: 8, width: 50)
@@ -82,7 +83,7 @@ print(snapManager.top?.constant)    # 8.0
 print(snapManager.height?.constant) # 0.5
 ```
 Snap calls may also be chained and will continue to return a `SnapManager`.
-
+-->
 ### Constants
 A `SnapConfig ` struct is also available where a developer may list all of their constraint constants beforehand and provide this type to the snap method argument.
 
@@ -92,7 +93,7 @@ let buttonSnapConfig = button.snap(constants: buttonConstraintConstants)
 ```
 
 ### Debugging
-SnapLayout will also print out errors to log if a `snap` was not properly applied. For example, if a view is trying to apply a constraint to its superview but was never added as a subview, a runtime log will appear in console.
+SnapLayout will also print out errors to log if a `snap` was not properly applied.
 
 ```
 SnapLayout Error - No constraint was applied for view: <UIView: 0x7fcb8f4031d0; frame = (0 0; 0 0); layer = <CALayer: 0x608000036320>>
