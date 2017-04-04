@@ -1,0 +1,14 @@
+module: SnapLayout
+author: Satinder Singh
+github_url: https://github.com/sp71/SnapLayout
+
+theme: fullwidth
+clean: true
+#exclude: []
+
+readme: README.md
+
+skip_undocumented: false
+hide_documentation_coverage: false
+
+xcodebuild_arguments: [-workspace, Example/SnapLayout.xcworkspace, -scheme, Pods-SnapLayout_ExampleTests, LIBRARY_SEARCH_PATHS=.build/debug]
