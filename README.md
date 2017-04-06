@@ -74,7 +74,6 @@ button1.snap(trailingView: button2, constant: 8)
 ```
 These buttons are now side by side where button2 is now the trailingView. No longer will developers have to think which trailing constraint should apply to which leading constraint. This keeps the code lean and clean.
 
-<!-- Chaining ability not setup yet. TODO
 ### Chaining
 ```swift
 let snapManager = view.snap(top: 8, leading: 8, width: 50)
@@ -83,7 +82,6 @@ print(snapManager.top?.constant)    # 8.0
 print(snapManager.height?.constant) # 0.5
 ```
 Snap calls may also be chained and will continue to return a `SnapManager`.
--->
 ### Constants
 A `SnapConfig ` struct is also available where a developer may list all of their constraint constants beforehand and provide this type to the snap method argument.
 
