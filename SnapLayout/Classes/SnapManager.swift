@@ -85,7 +85,7 @@ public class SnapManager {
     ///   - constants: ConstraintConstants to apply
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    func snap(to view: UIView? = nil, constants: SnapConfig) -> SnapManager {
+    public func snap(to view: UIView? = nil, constants: SnapConfig) -> SnapManager {
         return snap(to: view,
                     top: constants.top,
                     leading: constants.leading,
@@ -97,4 +97,107 @@ public class SnapManager {
                     centerY: constants.centerY)
     }
     
+    /// Apply width anchor between calling view and argument view with specified multiplier
+    ///
+    /// - Parameters:
+    ///   - view: UIView to apply constraint with (defaulted to superview if nil)
+    ///   - multiplier: Multiplier value to apply constraint with (default 1)
+    /// - Returns: SnapManager holding all the values associated with constraints
+    @discardableResult
+    public func snapWidth(to view: UIView? = nil, multiplier: CGFloat = 1) -> SnapManager {
+        guard let selfView = selfView else {
+            print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
+            return SnapManager()
+        }
+        return selfView.snapWidth(to: view, multiplier: multiplier)
+    }
+    
+    /// Apply height anchor between calling view and argument view with specified multiplier
+    ///
+    /// - Parameters:
+    ///   - view: UIView to apply constraint with (defaulted to superview if nil)
+    ///   - multiplier: Multiplier value to apply constraint with (default 1)
+    /// - Returns: SnapManager holding all the values associated with constraints
+    @discardableResult
+    public func snapHeight(to view: UIView? = nil, multiplier: CGFloat = 1) -> SnapManager {
+        guard let selfView = selfView else {
+            print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
+            return SnapManager()
+        }
+        return selfView.snapHeight(to: view, multiplier: multiplier)
+    }
+    
+    /// Anchor size by applying width anchor and height anchor
+    ///
+    /// - Parameter size: CGSize specifying width and height
+    /// - Returns: SnapManager holding all the values associated with constraints
+    @discardableResult
+    public func snapSize(size: CGSize) -> SnapManager {
+        guard let selfView = selfView else {
+            print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
+            return SnapManager()
+        }
+        return selfView.snapSize(size: size)
+    }
+    
+    /// Applies necessary constraint to ensure calling view will be leading view and the trailingView is on the trailing side.
+    /// Initalizes trailing property of SnapManager
+    /// - Parameters:
+    ///   - trailingView: View who will be shown as the trailingView
+    ///   - constant: Constant value to apply constraint with (default 0)
+    /// - Returns: SnapManager holding all the values associated with constraints
+    @discardableResult
+    public func snap(trailingView: UIView, constant: CGFloat = 0) -> SnapManager {
+        guard let selfView = selfView else {
+            print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
+            return SnapManager()
+        }
+        return selfView.snap(trailingView: trailingView, constant: constant)
+    }
+    
+    /// Applies necessary constraint to ensure calling view will be trailing and the leadingView is on the leading side.
+    /// Initalizes trailing property of SnapManager
+    /// - Parameters:
+    ///   - leadingView: View who will be shown as the leadingView
+    ///   - constant: Constant value to apply constraint with (default 0)
+    /// - Returns: SnapManager holding all the values associated with constraints
+    @discardableResult
+    public func snap(leadingView: UIView, constant: CGFloat = 0) -> SnapManager {
+        guard let selfView = selfView else {
+            print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
+            return SnapManager()
+        }
+        return selfView.snap(leadingView: leadingView, constant: constant)
+    }
+    
+    /// Applies necessary constraint to ensure calling view will be top view and the bottom view will be bottom view
+    /// Initalizes bottom property of SnapManager
+    /// - Parameters:
+    ///   - bottomView: View who will be shown as the bottomView
+    ///   - constant: Constant value to apply constraint with (default 0)
+    /// - Returns: SnapManager holding all the values associated with constraints
+    @discardableResult
+    public func snap(bottomView: UIView, constant: CGFloat = 0) -> SnapManager {
+        guard let selfView = selfView else {
+            print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
+            return SnapManager()
+        }
+        return selfView.snap(bottomView: bottomView, constant: constant)
+    }
+    
+    /// Applies necessary constraint to ensure calling view will be bottom view and the top view will be top view
+    ///
+    /// - Parameters:
+    ///   - topView: View who will be shown as the bottomView
+    ///   - constant: Constant value to apply constraint with (default 0)
+    /// - Returns: SnapManager holding all the values associated with constraints
+    @discardableResult
+    public func snap(topView: UIView, constant: CGFloat = 0) -> SnapManager {
+        guard let selfView = selfView else {
+            print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
+            return SnapManager()
+        }
+        return selfView.snap(topView: topView, constant: constant)
+    }
+
 }
