@@ -51,8 +51,8 @@ pod "SnapLayout"
 ```swift
 func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: Bool? = nil, centerY: Bool? = nil) -> ConstraintManager
 func snap(to view: UIView? = nil, constants: SnapConfig) -> SnapManager
-func snapWidth(to view: UIView? = nil, multiplier: CGFloat = 1) -> SnapManager
-func snapHeight(to view: UIView? = nil, multiplier: CGFloat = 1) -> SnapManager
+func snapWidth(to view: UIView, multiplier: CGFloat = 1) -> SnapManager
+func snapHeight(to view: UIView, multiplier: CGFloat = 1) -> SnapManager
 func snapSize(size: CGSize) -> SnapManager
 func snap(trailingView: UIView, constant: CGFloat = 0) -> SnapManager
 func snap(leadingView: UIView, constant: CGFloat = 0) -> SnapManager
@@ -77,7 +77,7 @@ These buttons are now side by side where button2 is now the trailingView. No lon
 ### Chaining
 ```swift
 let snapManager = view.snap(top: 8, leading: 8, width: 50)
-                      .snapHeight(multiplier: 0.5)
+                      .snapHeight(to: superview, multiplier: 0.5)
 print(snapManager.top?.constant)    # 8.0
 print(snapManager.height?.constant) # 0.5
 ```
