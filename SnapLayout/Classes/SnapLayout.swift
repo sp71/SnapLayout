@@ -10,6 +10,8 @@
 public extension UIView {
     
     /// Snap to view based on argument values.
+    /// - Warning: Since all parameters have default values, it is possible to call `snap()` with no parameters.
+    /// This is **strongly** discouraged.
     ///
     /// - Parameters:
     ///   - view: UIView to to apply constraints with (defaulted to superview if nil)
@@ -103,11 +105,7 @@ public extension UIView {
     ///   - multiplier: Multiplier value to apply constraint with (default 1)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    func snapWidth(to view: UIView? = nil, multiplier: CGFloat = 1) -> SnapManager {
-        guard let view = view ?? superview else {
-            print("SnapLayout Error - width constraint not applied for view: \(String(describing: self))")
-            return SnapManager()
-        }
+    func snapWidth(to view: UIView, multiplier: CGFloat = 1) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
         snapManager.width = widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier)
@@ -122,11 +120,7 @@ public extension UIView {
     ///   - multiplier: Multiplier value to apply constraint with (default 1)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    func snapHeight(to view: UIView? = nil, multiplier: CGFloat = 1) -> SnapManager {
-        guard let view = view ?? superview else {
-            print("SnapLayout Error - height constraint not applied for view: \(String(describing: self))")
-            return SnapManager()
-        }
+    func snapHeight(to view: UIView, multiplier: CGFloat = 1) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
         snapManager.height = heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier)
