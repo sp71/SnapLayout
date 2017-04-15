@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0543392C1EA1FB1100044728 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0543392B1EA1FB1100044728 /* BaseTestCase.swift */; };
 		05D8B3621E8E1F7F00E5819A /* SnapConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D8B3611E8E1F7F00E5819A /* SnapConfigTests.swift */; };
 		05D8B3641E8E1FAE00E5819A /* SnapManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D8B3631E8E1FAE00E5819A /* SnapManagerTests.swift */; };
 		05FA916D1E919EE90033BC64 /* SnapLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FA916C1E919EE90033BC64 /* SnapLayoutTests.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0543392B1EA1FB1100044728 /* BaseTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
 		05D8B3571E8E1D7C00E5819A /* SnapLayout_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapLayout_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D8B35B1E8E1D7C00E5819A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05D8B3611E8E1F7F00E5819A /* SnapConfigTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapConfigTests.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 				05D8B3631E8E1FAE00E5819A /* SnapManagerTests.swift */,
 				05FA916C1E919EE90033BC64 /* SnapLayoutTests.swift */,
 				05D8B35B1E8E1D7C00E5819A /* Info.plist */,
+				0543392B1EA1FB1100044728 /* BaseTestCase.swift */,
 			);
 			path = SnapLayout_ExampleTests;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0543392C1EA1FB1100044728 /* BaseTestCase.swift in Sources */,
 				05D8B3641E8E1FAE00E5819A /* SnapManagerTests.swift in Sources */,
 				05D8B3621E8E1F7F00E5819A /* SnapConfigTests.swift in Sources */,
 				05FA916D1E919EE90033BC64 /* SnapLayoutTests.swift in Sources */,
