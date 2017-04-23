@@ -9,13 +9,26 @@ Concise API for iOS Auto Layout. SnapLayout extends `UIView` to deliver a list o
 
 Imagine applying any or all of the following constraints in one line of code to a view: top, leading, trailing, bottom, width, height, centerX, centerY. Not enough? Start chaining your snap calls to support adjacents snaps. This is all possible with `SnapLayout`.
 
-### Table of Contents
- 1. [Setup](#setup)
-	* [Requirements](#requirements)
-	* [Installation](#installation)
- 1. [Usage](#usage)
-	* [Sample Code](#sample-code)
-	* [Example App](#example-app)
+## Why Use It?
+Lets use a real world example. Lets say the following view needs to be added. It has a centerX, centerY, width, and height constraint.
+ 
+![SnapLayout](https://github.com/sp71/SnapLayout/blob/master/Assets/exampleView.png?raw=true)
+
+[Apple](https://developer.apple.com/reference/uikit/nslayoutanchor):
+
+```swift
+squareView.translatesAutoresizingMaskIntoConstraints = false
+squareView.centerXAnchor.constraint(equalTo: squareSuperview.centerXAnchor)
+squareView.centerYAnchor.constraint(equalTo: squareSuperview.centerYAnchor)
+squareView.widthAnchor.constraint(equalToConstant: 50)
+squareView.heightAnchor.constraint(equalToConstant: 50)
+```
+
+SnapLayout:
+
+```swift
+squareView.snap(centerX: true, centerY: true, width: 50, height: 50)
+```
 
 ## Setup
 ### Requirements
