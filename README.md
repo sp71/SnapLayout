@@ -53,7 +53,7 @@ func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, 
 func snap(to view: UIView? = nil, constants: SnapConfig) -> SnapManager
 func snapWidth(to view: UIView, multiplier: CGFloat = 1) -> SnapManager
 func snapHeight(to view: UIView, multiplier: CGFloat = 1) -> SnapManager
-func snapSize(size: CGSize) -> SnapManager
+func snap(size: CGSize) -> SnapManager
 func snap(trailingView: UIView, constant: CGFloat = 0) -> SnapManager
 func snap(leadingView: UIView, constant: CGFloat = 0) -> SnapManager
 func snap(bottomView: UIView, constant: CGFloat = 0) -> SnapManager
