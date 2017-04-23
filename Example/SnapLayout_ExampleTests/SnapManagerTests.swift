@@ -208,7 +208,7 @@ class SnapManagerTests: BaseTestCase {
     func testSnapManagerSizeConstructor() {
         let bottomConstant = CGFloat(10)
         let size = CGSize(width: 30, height: 40)
-        let snapManager = childView.snap(bottom: bottomConstant).snapSize(size: size)
+        let snapManager = childView.snap(bottom: bottomConstant).snap(size: size)
         XCTAssertEqual(childView.translatesAutoresizingMaskIntoConstraints, false)
         XCTAssertNotNil(snapManager.bottom)
         XCTAssertNotNil(snapManager.width)

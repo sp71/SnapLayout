@@ -12,7 +12,7 @@ import SnapLayout
 internal final class ViewController: UIViewController {
     
     struct Constants {
-        static let emojiLabelConstraintConstants = SnapConfig(top: 50, leading: 8, trailing: -8)
+        static let emojiLabelConstraintConstants = SnapConfig(top: 50, leading: 8, trailing: 8)
     }
     
     /// Container view encompassing all subviews of View Controller
