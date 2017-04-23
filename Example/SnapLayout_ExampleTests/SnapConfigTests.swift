@@ -20,8 +20,8 @@ class SnapConfigTests: XCTestCase {
         let trailingConstant = CGFloat(24)
         let widthConstant = CGFloat(32)
         let heightConstant = CGFloat(64)
-        let centerXConstant = true
-        let centerYConstant = true
+        let centerXConstant = CGFloat(0)
+        let centerYConstant = CGFloat(0)
         let snapConfig = SnapConfig(top: topConstant,
                                     leading: leadingConstant,
                                     bottom: bottomConstant,

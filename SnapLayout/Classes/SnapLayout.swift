@@ -21,14 +21,14 @@ public extension UIView {
     ///   - trailing: Constant to apply from trailingAnchor  (if nil, not applied)
     ///   - width: Constant to apply from widthAnchor  (if nil, not applied)
     ///   - height: Constant to apply from heightAnchor  (if nil, not applied)
-    ///   - centerX: Boolean determining if centerX should be applied  (if nil, not applied)
-    ///   - centerY: Boolean determining if centerY should be applied  (if nil, not applied)
+    ///   - centerX: Constant offset to apply from centerXAnchor  (if nil, not applied)
+    ///   - centerY: Constant offset to apply from centerXAnchor  (if nil, not applied)
     /// - Note: width and height are not in respect to superview, but always to self
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
     func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil,
-              trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: Bool? = nil,
-              centerY: Bool? = nil) -> SnapManager {
+              trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: CGFloat? = nil,
+              centerY: CGFloat? = nil) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         var snapManager = SnapManager(view: self)
         if let width = width {
@@ -61,12 +61,12 @@ public extension UIView {
             snapManager.trailing = view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailing)
             snapManager.trailing?.isActive = true
         }
-        if let centerX = centerX, centerX {
-            snapManager.centerX = centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        if let centerX = centerX {
+            snapManager.centerX = centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: centerX)
             snapManager.centerX?.isActive = true
         }
-        if let centerY = centerY, centerY {
-            snapManager.centerY = centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        if let centerY = centerY {
+            snapManager.centerY = centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: centerY)
             snapManager.centerY?.isActive = true
         }
         let inActiveCount = [snapManager.width, snapManager.height, snapManager.top, snapManager.leading,

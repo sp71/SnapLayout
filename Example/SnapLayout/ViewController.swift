@@ -51,7 +51,7 @@ internal final class ViewController: UIViewController {
         snapLabel.font = UIFont(name: "Avenir-Book", size: 24)
         containerView.addSubview(snapLabel)
         // label will be below emojiTextView and aligned horizontally relative to super view
-        snapLabel.snap(topView: emojiLabel).snap(centerX: true)
+        snapLabel.snap(topView: emojiLabel).snap(centerX: 0)
     }
     
     /**
