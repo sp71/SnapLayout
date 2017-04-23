@@ -54,11 +54,11 @@ public extension UIView {
             snapManager.leading?.isActive = true
         }
         if let bottom = bottom {
-            snapManager.bottom = bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: bottom)
+            snapManager.bottom = view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottom)
             snapManager.bottom?.isActive = true
         }
         if let trailing = trailing {
-            snapManager.trailing = trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: trailing)
+            snapManager.trailing = view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailing)
             snapManager.trailing?.isActive = true
         }
         if let centerX = centerX, centerX {
@@ -133,7 +133,7 @@ public extension UIView {
     /// - Parameter size: CGSize specifying width and height
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    func snapSize(size: CGSize) -> SnapManager {
+    func snap(size: CGSize) -> SnapManager {
         return snap(width: size.width, height: size.height)
     }
     
@@ -147,7 +147,7 @@ public extension UIView {
     func snap(trailingView: UIView, constant: CGFloat = 0) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
-        snapManager.trailing = trailingAnchor.constraint(equalTo: trailingView.leadingAnchor, constant: constant)
+        snapManager.trailing = trailingView.leadingAnchor.constraint(equalTo: trailingAnchor, constant: constant)
         snapManager.trailing?.isActive = true
         return snapManager
     }
@@ -177,7 +177,7 @@ public extension UIView {
     func snap(bottomView: UIView, constant: CGFloat = 0) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
-        snapManager.bottom = bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: constant)
+        snapManager.bottom = bottomView.topAnchor.constraint(equalTo: bottomAnchor, constant: constant)
         snapManager.bottom?.isActive = true
         return snapManager
     }

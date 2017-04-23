@@ -52,7 +52,7 @@ class SnapLayoutTests: BaseTestCase {
     /// Tests Snap Size method
     func testSnapSize() {
         let size = CGSize(width: 30, height: 40)
-        let snapManager = view.snapSize(size: size)
+        let snapManager = view.snap(size: size)
         XCTAssertEqual(view.translatesAutoresizingMaskIntoConstraints, false)
         XCTAssertNotNil(snapManager.width)
         XCTAssertNotNil(snapManager.height)

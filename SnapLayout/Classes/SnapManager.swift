@@ -140,12 +140,12 @@ public class SnapManager {
     /// - Parameter size: CGSize specifying width and height
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    public func snapSize(size: CGSize) -> SnapManager {
+    public func snap(size: CGSize) -> SnapManager {
         guard let weakView = weakView else {
             print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
             return SnapManager()
         }
-        let newSnapManager = weakView.snapSize(size: size)
+        let newSnapManager = weakView.snap(size: size)
         sync(with: newSnapManager)
         return self
     }
