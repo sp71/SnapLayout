@@ -62,8 +62,8 @@ public class SnapManager {
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
     public func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil,
-                     trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: Bool? = nil,
-                     centerY: Bool? = nil) -> SnapManager {
+                     trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: CGFloat? = nil,
+                     centerY: CGFloat? = nil) -> SnapManager {
         guard let weakView = weakView else {
             print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
             return SnapManager()

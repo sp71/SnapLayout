@@ -21,8 +21,8 @@ class SnapManagerTests: BaseTestCase {
         let trailingConstant = CGFloat(24)
         let widthConstant = CGFloat(32)
         let heightConstant = CGFloat(64)
-        let centerXConstant = true
-        let centerYConstant = true
+        let centerXConstant = CGFloat(0)
+        let centerYConstant = CGFloat(0)
         let snapManager = childView.snap(top: topConstant,
                                     leading: leadingConstant,
                                     bottom: bottomConstant,
@@ -45,9 +45,9 @@ class SnapManagerTests: BaseTestCase {
         XCTAssertNotNil(snapManager.height)
         XCTAssertEqual(snapManager.height!.constant, heightConstant)
         XCTAssertNotNil(snapManager.centerX)
-        XCTAssertEqual(snapManager.centerX!.constant, 0)
+        XCTAssertEqual(snapManager.centerX!.constant, centerXConstant)
         XCTAssertNotNil(snapManager.centerY)
-        XCTAssertEqual(snapManager.centerY!.constant, 0)
+        XCTAssertEqual(snapManager.centerY!.constant, centerYConstant)
     }
 
     /// Test Snap Manager Constructor with a view who does not have a superview
@@ -114,8 +114,8 @@ class SnapManagerTests: BaseTestCase {
         let trailingConstant = CGFloat(24)
         let widthConstant = CGFloat(32)
         let heightConstant = CGFloat(64)
-        let centerXConstant = true
-        let centerYConstant = true
+        let centerXConstant = CGFloat(0)
+        let centerYConstant = CGFloat(0)
         let snapConfig = SnapConfig(top: topConstant,
                                     leading: leadingConstant,
                                     bottom: bottomConstant,
@@ -139,9 +139,9 @@ class SnapManagerTests: BaseTestCase {
         XCTAssertNotNil(snapManager.height)
         XCTAssertEqual(snapManager.height!.constant, heightConstant)
         XCTAssertNotNil(snapManager.centerX)
-        XCTAssertEqual(snapManager.centerX!.constant, 0)
+        XCTAssertEqual(snapManager.centerX!.constant, centerXConstant)
         XCTAssertNotNil(snapManager.centerY)
-        XCTAssertEqual(snapManager.centerY!.constant, 0)
+        XCTAssertEqual(snapManager.centerY!.constant, centerYConstant)
     }
     
     /// Test Snap Manager Config Constructor when used with chaining.
@@ -153,8 +153,8 @@ class SnapManagerTests: BaseTestCase {
         let trailingConstant = CGFloat(24)
         let widthConstant = CGFloat(32)
         let heightConstant = CGFloat(64)
-        let centerXConstant = true
-        let centerYConstant = true
+        let centerXConstant = CGFloat(0)
+        let centerYConstant = CGFloat(0)
         let snapConfig = SnapConfig(top: topConstant,
                                     leading: leadingConstant,
                                     bottom: bottomConstant,
@@ -177,7 +177,9 @@ class SnapManagerTests: BaseTestCase {
         XCTAssertNotNil(snapManager.height)
         XCTAssertEqual(snapManager.height!.constant, heightConstant)
         XCTAssertNotNil(snapManager.centerX)
+        XCTAssertEqual(snapManager.centerX!.constant, centerXConstant)
         XCTAssertNotNil(snapManager.centerY)
+        XCTAssertEqual(snapManager.centerY!.constant, centerYConstant)
     }
 
     /// Tests Snap Manager width during chaining

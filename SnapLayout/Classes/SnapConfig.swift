@@ -27,11 +27,11 @@ public struct SnapConfig {
     /// Constant value associated with height constraint. If nil, no constraint is applied.
     public var height: CGFloat?
 
-    /// Value associated with centerX constraint. Constraint only applied if true.
-    public var centerX: Bool?
+    /// Value associated with centerX constraint. If nil, no constraint is applied.
+    public var centerX: CGFloat?
 
-    /// Value associated with centerY constraint. Constraint only applied if true.
-    public var centerY: Bool?
+    /// Value associated with centerY constraint. If nil, no constraint is applied.
+    public var centerY: CGFloat?
 
     /// Constant value associated with zero for top, leading, bottom, and trailing.
     /// No width, height, centerX nor centerY constraint is applied.
@@ -46,11 +46,11 @@ public struct SnapConfig {
     ///   - trailing: Constant to apply from trailingAnchor  (if nil, not applied)
     ///   - width: Constant value associated with width constraint. If nil, no constraint is applied.
     ///   - height: Constant to apply from heightAnchor  (if nil, not applied)
-    ///   - centerX: Boolean determining if centerX should be applied  (if nil, not applied)
-    ///   - centerY: Boolean determining if centerY should be applied  (if nil, not applied)
+    ///   - centerX: Constant offset to apply from centerXAnchor  (if nil, not applied)
+    ///   - centerY: Constant offset to apply from centerXAnchor  (if nil, not applied)
     public init(top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil,
                 trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil,
-                centerX: Bool? = nil, centerY: Bool? = nil) {
+                centerX: CGFloat? = nil, centerY: CGFloat? = nil) {
         self.top = top
         self.leading = leading
         self.bottom = bottom

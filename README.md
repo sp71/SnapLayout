@@ -18,17 +18,18 @@ Lets use a real world example. Lets say the following view needs to be added. It
 
 ```swift
 squareView.translatesAutoresizingMaskIntoConstraints = false
-squareView.centerXAnchor.constraint(equalTo: squareSuperview.centerXAnchor)
-squareView.centerYAnchor.constraint(equalTo: squareSuperview.centerYAnchor)
 squareView.widthAnchor.constraint(equalToConstant: 50)
 squareView.heightAnchor.constraint(equalToConstant: 50)
+squareView.centerXAnchor.constraint(equalTo: squareSuperview.centerXAnchor, constant: 0)
+squareView.centerYAnchor.constraint(equalTo: squareSuperview.centerYAnchor, constant: 0)
 ```
 
 SnapLayout:
 
 ```swift
-squareView.snap(centerX: true, centerY: true, width: 50, height: 50)
+squareView.snap(width: 50, height: 50, centerX: 0, centerY: 0)
 ```
+SnapLayout handles `translatesAutoresizingMaskIntoConstraints` and references the superview of `squareView` when applying constraints. Built to be flexible, yet readable.
 
 ## Setup
 ### Requirements
@@ -62,7 +63,7 @@ pod "SnapLayout"
 
 ### [`UIView`](SnapLayout/Classes/SnapLayout.swift) extension methods
 ```swift
-func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: Bool? = nil, centerY: Bool? = nil) -> ConstraintManager
+func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: CGFloat? = nil, centerY: CGFloat? = nil) -> ConstraintManager
 func snap(to view: UIView? = nil, constants: SnapConfig) -> SnapManager
 func snapWidth(to view: UIView, multiplier: CGFloat = 1) -> SnapManager
 func snapHeight(to view: UIView, multiplier: CGFloat = 1) -> SnapManager
@@ -99,7 +100,7 @@ Snap calls may also be chained and will continue to return a `SnapManager`.
 A `SnapConfig ` struct is also available where a developer may list all of their constraint constants beforehand and provide this type to the snap method argument.
 
 ```swift
-let buttonSnapConfig = SnapConfig(top: 50, leading: 50, trailing: 50, width: 30, centerX: true)
+let buttonSnapConfig = SnapConfig(top: 50, leading: 50, trailing: 50, width: 30, centerX: 0)
 let buttonSnapConfig = button.snap(constants: buttonConstraintConstants)
 ```
 
