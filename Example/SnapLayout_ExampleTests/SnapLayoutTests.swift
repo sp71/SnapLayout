@@ -36,6 +36,14 @@ class SnapLayoutTests: BaseTestCase {
         XCTAssertEqual(snapManager.width!.isActive, true)
         XCTAssertEqual(snapManager.width!.constant, 0)
         XCTAssertEqual(snapManager.width!.multiplier, 0.5)
+        
+        let snapManagerInActive = childView.snapWidth(to: childView2, multiplier: 0.5, isActive: false)
+        XCTAssertEqual(childView.translatesAutoresizingMaskIntoConstraints, false)
+        XCTAssertEqual(childView2.translatesAutoresizingMaskIntoConstraints, true)
+        XCTAssertNotNil(snapManagerInActive.width)
+        XCTAssertEqual(snapManagerInActive.width!.isActive, false)
+        XCTAssertEqual(snapManagerInActive.width!.constant, 0)
+        XCTAssertEqual(snapManagerInActive.width!.multiplier, 0.5)
     }
     
     /// Tets Snap Height method
@@ -47,6 +55,14 @@ class SnapLayoutTests: BaseTestCase {
         XCTAssertEqual(snapManager.height!.isActive, true)
         XCTAssertEqual(snapManager.height!.constant, 0)
         XCTAssertEqual(snapManager.height!.multiplier, 0.5)
+        
+        let snapManagerInActive = childView.snapHeight(to: childView2, multiplier: 0.5, isActive: false)
+        XCTAssertEqual(childView.translatesAutoresizingMaskIntoConstraints, false)
+        XCTAssertEqual(childView2.translatesAutoresizingMaskIntoConstraints, true)
+        XCTAssertNotNil(snapManagerInActive.height)
+        XCTAssertEqual(snapManagerInActive.height!.isActive, false)
+        XCTAssertEqual(snapManagerInActive.height!.constant, 0)
+        XCTAssertEqual(snapManagerInActive.height!.multiplier, 0.5)
     }
     
     /// Tests Snap Size method
@@ -62,6 +78,17 @@ class SnapLayoutTests: BaseTestCase {
         XCTAssertEqual(snapManager.height!.constant, size.height)
         XCTAssertEqual(snapManager.width!.multiplier, 1.0)
         XCTAssertEqual(snapManager.height!.multiplier, 1.0)
+        
+        let snapManagerInActive = view.snap(size: size, isActive: false)
+        XCTAssertEqual(view.translatesAutoresizingMaskIntoConstraints, false)
+        XCTAssertNotNil(snapManagerInActive.width)
+        XCTAssertNotNil(snapManagerInActive.height)
+        XCTAssertEqual(snapManagerInActive.width!.isActive, false)
+        XCTAssertEqual(snapManagerInActive.height!.isActive, false)
+        XCTAssertEqual(snapManagerInActive.width!.constant, size.width)
+        XCTAssertEqual(snapManagerInActive.height!.constant, size.height)
+        XCTAssertEqual(snapManagerInActive.width!.multiplier, 1.0)
+        XCTAssertEqual(snapManagerInActive.height!.multiplier, 1.0)
     }
     
     /// Tests Snap Trailing View
@@ -74,6 +101,14 @@ class SnapLayoutTests: BaseTestCase {
         XCTAssertEqual(snapManager.trailing!.isActive, true)
         XCTAssertEqual(snapManager.trailing!.constant, trailingConstant)
         XCTAssertEqual(snapManager.trailing!.multiplier, 1.0)
+        
+        let snapManagerInActive = childView.snap(trailingView: childView2, constant: trailingConstant, isActive: false)
+        XCTAssertEqual(childView.translatesAutoresizingMaskIntoConstraints, false)
+        XCTAssertEqual(childView2.translatesAutoresizingMaskIntoConstraints, true)
+        XCTAssertNotNil(snapManagerInActive.trailing)
+        XCTAssertEqual(snapManagerInActive.trailing!.isActive, false)
+        XCTAssertEqual(snapManagerInActive.trailing!.constant, trailingConstant)
+        XCTAssertEqual(snapManagerInActive.trailing!.multiplier, 1.0)
     }
     
     /// Tests Snap Leading View
@@ -86,6 +121,14 @@ class SnapLayoutTests: BaseTestCase {
         XCTAssertEqual(snapManager.leading!.isActive, true)
         XCTAssertEqual(snapManager.leading!.constant, leadingConstant)
         XCTAssertEqual(snapManager.leading!.multiplier, 1.0)
+        
+        let snapManagerInActive = childView.snap(leadingView: childView2, constant: leadingConstant, isActive: false)
+        XCTAssertEqual(childView.translatesAutoresizingMaskIntoConstraints, false)
+        XCTAssertEqual(childView2.translatesAutoresizingMaskIntoConstraints, true)
+        XCTAssertNotNil(snapManagerInActive.leading)
+        XCTAssertEqual(snapManagerInActive.leading!.isActive, false)
+        XCTAssertEqual(snapManagerInActive.leading!.constant, leadingConstant)
+        XCTAssertEqual(snapManagerInActive.leading!.multiplier, 1.0)
     }
     
     /// Tests Snap Bottom View
@@ -98,6 +141,14 @@ class SnapLayoutTests: BaseTestCase {
         XCTAssertEqual(snapManager.bottom!.isActive, true)
         XCTAssertEqual(snapManager.bottom!.constant, bottomConstant)
         XCTAssertEqual(snapManager.bottom!.multiplier, 1.0)
+        
+        let snapManagerInActive = childView.snap(bottomView: childView2, constant: bottomConstant, isActive: false)
+        XCTAssertEqual(childView.translatesAutoresizingMaskIntoConstraints, false)
+        XCTAssertEqual(childView2.translatesAutoresizingMaskIntoConstraints, true)
+        XCTAssertNotNil(snapManagerInActive.bottom)
+        XCTAssertEqual(snapManagerInActive.bottom!.isActive, false)
+        XCTAssertEqual(snapManagerInActive.bottom!.constant, bottomConstant)
+        XCTAssertEqual(snapManagerInActive.bottom!.multiplier, 1.0)
     }
     
     /// Tests Snap Trailing View
@@ -110,6 +161,14 @@ class SnapLayoutTests: BaseTestCase {
         XCTAssertEqual(snapManager.top!.isActive, true)
         XCTAssertEqual(snapManager.top!.constant, topConstant)
         XCTAssertEqual(snapManager.top!.multiplier, 1.0)
+        
+        let snapManagerInActive = childView.snap(topView: childView2, constant: topConstant, isActive: false)
+        XCTAssertEqual(childView.translatesAutoresizingMaskIntoConstraints, false)
+        XCTAssertEqual(childView2.translatesAutoresizingMaskIntoConstraints, true)
+        XCTAssertNotNil(snapManagerInActive.top)
+        XCTAssertEqual(snapManagerInActive.top!.isActive, false)
+        XCTAssertEqual(snapManagerInActive.top!.constant, topConstant)
+        XCTAssertEqual(snapManagerInActive.top!.multiplier, 1.0)
     }
     
 }
