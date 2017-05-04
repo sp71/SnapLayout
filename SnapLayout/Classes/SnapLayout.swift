@@ -23,57 +23,66 @@ public extension UIView {
     ///   - height: Constant to apply from heightAnchor  (if nil, not applied)
     ///   - centerX: Constant offset to apply from centerXAnchor  (if nil, not applied)
     ///   - centerY: Constant offset to apply from centerXAnchor  (if nil, not applied)
+    ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Note: width and height are not in respect to superview, but always to self
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
     func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil,
               trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: CGFloat? = nil,
-              centerY: CGFloat? = nil) -> SnapManager {
+              centerY: CGFloat? = nil, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         var snapManager = SnapManager(view: self)
+        var constraintList = [NSLayoutConstraint]()
+        defer {
+            if isActive {
+                NSLayoutConstraint.activate(constraintList)
+                if constraintList.count == 0 {
+                    print("SnapLayout Error - No constraint was applied for view: \(String(describing: view))")
+                }
+            }
+        }
         if let width = width {
-            snapManager.width = widthAnchor.constraint(equalToConstant: width)
-            snapManager.width?.isActive = true
+            let constraint = widthAnchor.constraint(equalToConstant: width)
+            snapManager.width = constraint
+            constraintList.append(constraint)
         }
         if let height = height {
-            snapManager.height = heightAnchor.constraint(equalToConstant: height)
-            snapManager.height?.isActive = true
+            let constraint = heightAnchor.constraint(equalToConstant: height)
+            snapManager.height = constraint
+            constraintList.append(constraint)
         }
         guard let view = view ?? superview else {
-            if snapManager.width == nil && snapManager.height == nil {
-                print("SnapLayout Error - No constraint was applied for view: \(String(describing: self))")
-            }
             return snapManager
         }
         if let top = top {
-            snapManager.top = topAnchor.constraint(equalTo: view.topAnchor, constant: top)
-            snapManager.top?.isActive = true
+            let constraint = topAnchor.constraint(equalTo: view.topAnchor, constant: top)
+            snapManager.top = constraint
+            constraintList.append(constraint)
         }
         if let leading = leading {
-            snapManager.leading = leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leading)
-            snapManager.leading?.isActive = true
+            let constraint = leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leading)
+            snapManager.leading = constraint
+            constraintList.append(constraint)
         }
         if let bottom = bottom {
-            snapManager.bottom = view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottom)
-            snapManager.bottom?.isActive = true
+            let constraint = view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottom)
+            snapManager.bottom = constraint
+            constraintList.append(constraint)
         }
         if let trailing = trailing {
-            snapManager.trailing = view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailing)
-            snapManager.trailing?.isActive = true
+            let constraint = view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailing)
+            snapManager.trailing = constraint
+            constraintList.append(constraint)
         }
         if let centerX = centerX {
-            snapManager.centerX = centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: centerX)
-            snapManager.centerX?.isActive = true
+            let constraint = centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: centerX)
+            snapManager.centerX = constraint
+            constraintList.append(constraint)
         }
         if let centerY = centerY {
-            snapManager.centerY = centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: centerY)
-            snapManager.centerY?.isActive = true
-        }
-        let inActiveCount = [snapManager.width, snapManager.height, snapManager.top, snapManager.leading,
-                           snapManager.bottom, snapManager.trailing, snapManager.centerX,
-                           snapManager.centerY].filter ({ $0?.isActive == true }).count
-        if inActiveCount == 0 {
-            print("SnapLayout Error - No constraint was applied for view: \(String(describing: view))")
+            let constraint = centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: centerY)
+            snapManager.centerY = constraint
+            constraintList.append(constraint)
         }
         return snapManager
     }
@@ -84,9 +93,10 @@ public extension UIView {
     /// - Parameters:
     ///   - view: UIView to to apply constraints with (defaulted to superview if nil)
     ///   - constants: ConstraintConstants to apply
+    ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    func snap(to view: UIView? = nil, constants: SnapConfig) -> SnapManager {
+    func snap(to view: UIView? = nil, constants: SnapConfig, isActive: Bool = true) -> SnapManager {
         return snap(to: view,
                     top: constants.top,
                     leading: constants.leading,
@@ -95,7 +105,8 @@ public extension UIView {
                     width: constants.width,
                     height: constants.height,
                     centerX: constants.centerX,
-                    centerY: constants.centerY)
+                    centerY: constants.centerY,
+                    isActive: isActive)
     }
     
     /// Apply width anchor between calling view and argument view with specified multiplier
@@ -103,13 +114,14 @@ public extension UIView {
     /// - Parameters:
     ///   - view: UIView to apply constraint with (defaulted to superview if nil)
     ///   - multiplier: Multiplier value to apply constraint with (default 1)
+    ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    func snapWidth(to view: UIView, multiplier: CGFloat = 1) -> SnapManager {
+    func snapWidth(to view: UIView, multiplier: CGFloat = 1, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
         snapManager.width = widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier)
-        snapManager.width?.isActive = true
+        snapManager.width?.isActive = isActive
         return snapManager
     }
     
@@ -118,23 +130,25 @@ public extension UIView {
     /// - Parameters:
     ///   - view: UIView to apply constraint with (defaulted to superview if nil)
     ///   - multiplier: Multiplier value to apply constraint with (default 1)
+    ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    func snapHeight(to view: UIView, multiplier: CGFloat = 1) -> SnapManager {
+    func snapHeight(to view: UIView, multiplier: CGFloat = 1, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
         snapManager.height = heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier)
-        snapManager.height?.isActive = true
+        snapManager.height?.isActive = isActive
         return snapManager
     }
     
     /// Anchor size by applying width anchor and height anchor
     ///
     /// - Parameter size: CGSize specifying width and height
+    /// - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    func snap(size: CGSize) -> SnapManager {
-        return snap(width: size.width, height: size.height)
+    func snap(size: CGSize, isActive: Bool = true) -> SnapManager {
+        return snap(width: size.width, height: size.height, isActive: isActive)
     }
     
     /// Applies necessary constraint to ensure calling view will be leading view and the trailingView is on the trailing side.
@@ -142,13 +156,14 @@ public extension UIView {
     /// - Parameters:
     ///   - trailingView: View who will be shown as the trailingView
     ///   - constant: Constant value to apply constraint with (default 0)
+    ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    func snap(trailingView: UIView, constant: CGFloat = 0) -> SnapManager {
+    func snap(trailingView: UIView, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
         snapManager.trailing = trailingView.leadingAnchor.constraint(equalTo: trailingAnchor, constant: constant)
-        snapManager.trailing?.isActive = true
+        snapManager.trailing?.isActive = isActive
         return snapManager
     }
     
@@ -157,13 +172,14 @@ public extension UIView {
     /// - Parameters:
     ///   - leadingView: View who will be shown as the leadingView
     ///   - constant: Constant value to apply constraint with (default 0)
+    ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    func snap(leadingView: UIView, constant: CGFloat = 0) -> SnapManager {
+    func snap(leadingView: UIView, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
         snapManager.leading = leadingAnchor.constraint(equalTo: leadingView.trailingAnchor, constant: constant)
-        snapManager.leading?.isActive = true
+        snapManager.leading?.isActive = isActive
         return snapManager
     }
     
@@ -172,13 +188,14 @@ public extension UIView {
     /// - Parameters:
     ///   - bottomView: View who will be shown as the bottomView
     ///   - constant: Constant value to apply constraint with (default 0)
+    ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    func snap(bottomView: UIView, constant: CGFloat = 0) -> SnapManager {
+    func snap(bottomView: UIView, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
         snapManager.bottom = bottomView.topAnchor.constraint(equalTo: bottomAnchor, constant: constant)
-        snapManager.bottom?.isActive = true
+        snapManager.bottom?.isActive = isActive
         return snapManager
     }
     
@@ -187,13 +204,14 @@ public extension UIView {
     /// - Parameters:
     ///   - topView: View who will be shown as the bottomView
     ///   - constant: Constant value to apply constraint with (default 0)
+    ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    func snap(topView: UIView, constant: CGFloat = 0) -> SnapManager {
+    func snap(topView: UIView, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
         snapManager.top = topAnchor.constraint(equalTo: topView.bottomAnchor, constant: constant)
-        snapManager.top?.isActive = true
+        snapManager.top?.isActive = isActive
         return snapManager
     }
     
