@@ -7,7 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		053493EC1EBD486B00D9F89D /* SizeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053493EB1EBD486B00D9F89D /* SizeTableViewCell.swift */; };
+		053493F11EBD4E7300D9F89D /* AdjacentVerticalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 053493F01EBD4E7300D9F89D /* AdjacentVerticalTableViewCell.swift */; };
 		0543392C1EA1FB1100044728 /* BaseTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0543392B1EA1FB1100044728 /* BaseTestCase.swift */; };
+		057099511EBD7B7F00D6EF71 /* AdjacentHorizontalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057099501EBD7B7F00D6EF71 /* AdjacentHorizontalTableViewCell.swift */; };
+		057099531EBD7D3000D6EF71 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057099521EBD7D3000D6EF71 /* Style.swift */; };
+		05B6D15C1EBC3B3400715D40 /* WelcomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B6D15B1EBC3B3400715D40 /* WelcomeTableViewCell.swift */; };
+		05B6D15E1EBC3E6F00715D40 /* IndexManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B6D15D1EBC3E6F00715D40 /* IndexManager.swift */; };
+		05B6D1601EBC434500715D40 /* PriorityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B6D15F1EBC434500715D40 /* PriorityTableViewCell.swift */; };
+		05B6D1621EBC438300715D40 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B6D1611EBC438300715D40 /* UITableViewExtension.swift */; };
+		05B6D1641EBC48CA00715D40 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B6D1631EBC48CA00715D40 /* TitleTableViewCell.swift */; };
 		05D8B3621E8E1F7F00E5819A /* SnapConfigTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D8B3611E8E1F7F00E5819A /* SnapConfigTests.swift */; };
 		05D8B3641E8E1FAE00E5819A /* SnapManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05D8B3631E8E1FAE00E5819A /* SnapManagerTests.swift */; };
 		05FA916D1E919EE90033BC64 /* SnapLayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05FA916C1E919EE90033BC64 /* SnapLayoutTests.swift */; };
@@ -30,7 +39,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		053493EB1EBD486B00D9F89D /* SizeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeTableViewCell.swift; sourceTree = "<group>"; };
+		053493F01EBD4E7300D9F89D /* AdjacentVerticalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjacentVerticalTableViewCell.swift; sourceTree = "<group>"; };
 		0543392B1EA1FB1100044728 /* BaseTestCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTestCase.swift; sourceTree = "<group>"; };
+		057099501EBD7B7F00D6EF71 /* AdjacentHorizontalTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdjacentHorizontalTableViewCell.swift; sourceTree = "<group>"; };
+		057099521EBD7D3000D6EF71 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		05B6D15B1EBC3B3400715D40 /* WelcomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeTableViewCell.swift; sourceTree = "<group>"; };
+		05B6D15D1EBC3E6F00715D40 /* IndexManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexManager.swift; sourceTree = "<group>"; };
+		05B6D15F1EBC434500715D40 /* PriorityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityTableViewCell.swift; sourceTree = "<group>"; };
+		05B6D1611EBC438300715D40 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		05B6D1631EBC48CA00715D40 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
 		05D8B3571E8E1D7C00E5819A /* SnapLayout_ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapLayout_ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		05D8B35B1E8E1D7C00E5819A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		05D8B3611E8E1F7F00E5819A /* SnapConfigTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapConfigTests.swift; sourceTree = "<group>"; };
@@ -73,6 +91,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		053493ED1EBD4A1700D9F89D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				057099501EBD7B7F00D6EF71 /* AdjacentHorizontalTableViewCell.swift */,
+				053493F01EBD4E7300D9F89D /* AdjacentVerticalTableViewCell.swift */,
+				05B6D15F1EBC434500715D40 /* PriorityTableViewCell.swift */,
+				053493EB1EBD486B00D9F89D /* SizeTableViewCell.swift */,
+				05B6D1631EBC48CA00715D40 /* TitleTableViewCell.swift */,
+				05B6D15B1EBC3B3400715D40 /* WelcomeTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		053493EE1EBD4A2D00D9F89D /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				05B6D15D1EBC3E6F00715D40 /* IndexManager.swift */,
+				607FACD71AFB9204008FA782 /* ViewController.swift */,
+			);
+			name = VC;
+			sourceTree = "<group>";
+		};
+		053493EF1EBD4A3400D9F89D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				05B6D1611EBC438300715D40 /* UITableViewExtension.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		057099541EBD7D4B00D6EF71 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				057099521EBD7D3000D6EF71 /* Style.swift */,
+			);
+			name = Style;
+			sourceTree = "<group>";
+		};
 		05D8B3581E8E1D7C00E5819A /* SnapLayout_ExampleTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,11 +176,11 @@
 		607FACD21AFB9204008FA782 /* Example for SnapLayout */ = {
 			isa = PBXGroup;
 			children = (
-				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
-				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				607FACDC1AFB9204008FA782 /* Images.xcassets */,
-				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				053493EE1EBD4A2D00D9F89D /* VC */,
+				053493ED1EBD4A1700D9F89D /* Cells */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				053493EF1EBD4A3400D9F89D /* Extension */,
+				057099541EBD7D4B00D6EF71 /* Style */,
 			);
 			name = "Example for SnapLayout";
 			path = SnapLayout;
@@ -133,6 +189,9 @@
 		607FACD31AFB9204008FA782 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
+				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
+				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACD41AFB9204008FA782 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -370,8 +429,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05B6D15E1EBC3E6F00715D40 /* IndexManager.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				053493EC1EBD486B00D9F89D /* SizeTableViewCell.swift in Sources */,
+				053493F11EBD4E7300D9F89D /* AdjacentVerticalTableViewCell.swift in Sources */,
+				05B6D1621EBC438300715D40 /* UITableViewExtension.swift in Sources */,
+				05B6D1641EBC48CA00715D40 /* TitleTableViewCell.swift in Sources */,
+				05B6D1601EBC434500715D40 /* PriorityTableViewCell.swift in Sources */,
+				05B6D15C1EBC3B3400715D40 /* WelcomeTableViewCell.swift in Sources */,
+				057099511EBD7B7F00D6EF71 /* AdjacentHorizontalTableViewCell.swift in Sources */,
+				057099531EBD7D3000D6EF71 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
