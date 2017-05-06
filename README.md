@@ -63,7 +63,7 @@ pod "SnapLayout"
 
 ### [`UIView`](SnapLayout/Classes/SnapLayout.swift) extension methods
 ```swift
-func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: CGFloat? = nil, centerY: CGFloat? = nil, isActive: Bool = true) -> ConstraintManager
+func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: CGFloat? = nil, centerY: CGFloat? = nil, isActive: Bool = true) -> SnapManager
 func snap(to view: UIView? = nil, constants: SnapConfig, isActive: Bool = true) -> SnapManager
 func snapWidth(to view: UIView, multiplier: CGFloat = 1, isActive: Bool = true) -> SnapManager
 func snapHeight(to view: UIView, multiplier: CGFloat = 1, isActive: Bool = true) -> SnapManager
