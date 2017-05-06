@@ -9,57 +9,69 @@
 import UIKit
 import SnapLayout
 
+/// Displays list of cells demonstrating `SnapLayout` usage
 internal final class ViewController: UIViewController {
     
-    struct Constants {
-        static let emojiLabelConstraintConstants = SnapConfig(top: 50, leading: 8, trailing: 8)
-    }
-    
-    /// Container view encompassing all subviews of View Controller
-    fileprivate let containerView = UIView()
-    fileprivate let emojiLabel = UILabel()
+    fileprivate let tableView = UITableView()
+    fileprivate let cellList: [IndexManager] = [.welcome, .adjacentVertical, .adjacentHorizontal, .size, .priority]
 
+    // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        automaticallyAdjustsScrollViewInsets = false
-        setupContainerView()
-        setupEmojiLabel()
-        setupSnapLayoutLabel()
+        setupTableView()
     }
     
-    /// Setup Container View
-    fileprivate func setupContainerView() {
-        containerView.backgroundColor = UIColor(red: 219/255, green: 165/255, blue: 182/255, alpha: 1)
-        view.addSubview(containerView)
-        // Container View will now encompass entire view real estate
-        containerView.snap(constants: .zero)
+    // MARK: - Private Methods
+    fileprivate func setupTableView() {
+        tableView.estimatedRowHeight = 80
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.register([WelcomeTableViewCell.self, PriorityTableViewCell.self, SizeTableViewCell.self, AdjacentVerticalTableViewCell.self,
+                            AdjacentHorizontalTableViewCell.self])
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.separatorColor = .black
+        tableView.backgroundColor = .white
+        tableView.showsVerticalScrollIndicator = false
+        tableView.alwaysBounceVertical = true
+        tableView.separatorInset = .zero
+        tableView.bounces = true
+        tableView.allowsSelection = false
+        tableView.tableFooterView = UIView(frame: .zero)
+        view.addSubview(tableView)
+        tableView.snap(constants: .zero) // snaps top, leading, bottom, and trailing
     }
-    
-    /// Setup Container View
-    fileprivate func setupEmojiLabel() {
-        emojiLabel.text = emojiList()
-        containerView.addSubview(emojiLabel)
-        emojiLabel.snap(constants: Constants.emojiLabelConstraintConstants)
-        emojiLabel.numberOfLines = 0
-    }
-    
-    /// Setup label with SnapLayout text
-    fileprivate func setupSnapLayoutLabel() {
-        let snapLabel = UILabel()
-        snapLabel.text = "SnapLayout"
-        snapLabel.textColor = UIColor.white
-        snapLabel.font = UIFont(name: "Avenir-Book", size: 24)
-        containerView.addSubview(snapLabel)
-        // label will be below emojiTextView and aligned horizontally relative to super view
-        snapLabel.snap(topView: emojiLabel).snap(centerX: 0)
-    }
-    
-    /**
-     Produces single string containing MANY emojis 😁
-     - returns: String containing MANY emojis 😉
-     */
-    fileprivate func emojiList() -> String {
-        return "😁😂😃😄😅😆😇😈😉😊😋😌😍😎😏😐😑😒😓😔😕😖😗😘😙😚😛😜😝😞😟😠😡😢😣😤😥😦😧😨😩😪😫😬"
-    }
+
 }
 
+// MARK: - UITableViewDataSource, UITableViewDelegate
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch cellList[indexPath.row] {
+        case .welcome:
+            return tableView.dequeueCell(for: indexPath) as WelcomeTableViewCell
+        case .priority:
+            return tableView.dequeueCell(for: indexPath) as PriorityTableViewCell
+        case .size:
+            return tableView.dequeueCell(for: indexPath) as SizeTableViewCell
+        case .adjacentVertical:
+            return tableView.dequeueCell(for: indexPath) as AdjacentVerticalTableViewCell
+        case .adjacentHorizontal:
+            return tableView.dequeueCell(for: indexPath) as AdjacentHorizontalTableViewCell
+        }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch cellList[indexPath.row] {
+        case .size:
+            return SizeTableViewCell.height
+        default:
+            return UITableViewAutomaticDimension
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return cellList.count
+    }
+
+}
