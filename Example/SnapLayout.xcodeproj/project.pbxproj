@@ -129,7 +129,7 @@
 			name = Style;
 			sourceTree = "<group>";
 		};
-		05D8B3581E8E1D7C00E5819A /* SnapLayout_ExampleTests */ = {
+		05D8B3581E8E1D7C00E5819A /* SnapLayout Tests */ = {
 			isa = PBXGroup;
 			children = (
 				05D8B3611E8E1F7F00E5819A /* SnapConfigTests.swift */,
@@ -138,6 +138,7 @@
 				05D8B35B1E8E1D7C00E5819A /* Info.plist */,
 				0543392B1EA1FB1100044728 /* BaseTestCase.swift */,
 			);
+			name = "SnapLayout Tests";
 			path = SnapLayout_ExampleTests;
 			sourceTree = "<group>";
 		};
@@ -156,8 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
-				607FACD21AFB9204008FA782 /* Example for SnapLayout */,
-				05D8B3581E8E1D7C00E5819A /* SnapLayout_ExampleTests */,
+				607FACD21AFB9204008FA782 /* iOS */,
+				05D8B3581E8E1D7C00E5819A /* SnapLayout Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
 				55763BA43100368A27E4A4CD /* Pods */,
 				B26703EFE7205943E8D7FD25 /* Frameworks */,
@@ -173,16 +174,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		607FACD21AFB9204008FA782 /* Example for SnapLayout */ = {
+		607FACD21AFB9204008FA782 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
 				053493EE1EBD4A2D00D9F89D /* VC */,
 				053493ED1EBD4A1700D9F89D /* Cells */,
-				607FACD31AFB9204008FA782 /* Supporting Files */,
 				053493EF1EBD4A3400D9F89D /* Extension */,
+				607FACD31AFB9204008FA782 /* Supporting Files */,
 				057099541EBD7D4B00D6EF71 /* Style */,
 			);
-			name = "Example for SnapLayout";
+			name = iOS;
 			path = SnapLayout;
 			sourceTree = "<group>";
 		};
@@ -272,7 +273,6 @@
 				TargetAttributes = {
 					05D8B3561E8E1D7C00E5819A = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 5ZZ7W4SB26;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -472,8 +472,9 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = 5ZZ7W4SB26;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SnapLayout_ExampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -492,7 +493,8 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				DEVELOPMENT_TEAM = 5ZZ7W4SB26;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SnapLayout_ExampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -596,6 +598,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = SnapLayout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -611,6 +614,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				INFOPLIST_FILE = SnapLayout/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
