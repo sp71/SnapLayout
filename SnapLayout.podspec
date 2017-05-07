@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SnapLayout'
-  s.version          = '1.6.1'
+  s.version          = '1.6.2'
   s.summary          = 'Concise API for iOS Auto Layout'
 
 s.description  = <<-DESC
@@ -28,6 +28,7 @@ DESC
   s.source           = { :git => 'https://github.com/sp71/SnapLayout.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '9.0'
+  s.osx.deployment_target = '10.11'
   s.requires_arc = true
 
   s.source_files = 'SnapLayout/Classes/**/*'

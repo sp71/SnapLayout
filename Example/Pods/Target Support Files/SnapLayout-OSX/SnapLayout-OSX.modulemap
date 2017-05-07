@@ -1,5 +1,5 @@
 framework module SnapLayout {
-  umbrella header "SnapLayout-umbrella.h"
+  umbrella header "SnapLayout-OSX-umbrella.h"
 
   export *
   module * { export * }

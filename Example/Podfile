@@ -1,11 +1,19 @@
 use_frameworks!
 
-target 'SnapLayout_Example' do
+
+target 'Example-iOS' do
+  platform :ios, '9.0'
   pod 'SnapLayout', :path => '../'
+end
+
+target 'Example-MacOS' do
+  platform :osx, '10.11'
+  pod 'SnapLayout', :path => '../'
+end
 
 target 'SnapLayout_ExampleTests' do
+   platform :ios, '9.0'
    inherit! :search_paths
-  end
 end
 
 post_install do |installer|

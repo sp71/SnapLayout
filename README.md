@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/SnapLayout.svg?style=flat)](http://cocoapods.org/pods/SnapLayout)
 [![Platform](https://img.shields.io/cocoapods/p/SnapLayout.svg?style=flat)](http://cocoapods.org/pods/SnapLayout)
 
-Concise API for iOS Auto Layout. SnapLayout extends `UIView` to deliver a list of APIs to improve readability while also shortening constraint code. Internally uses AutoLayout to provide the best experience. With SnapLayout, developers can remove boilerplate code but not at the cost of readability.
+Concise API for iOS & MacOS Auto Layout. SnapLayout extends `UIView` and `NSView` to deliver a list of APIs to improve readability while also shortening constraint code. Internally uses AutoLayout to provide the best experience. With SnapLayout, developers can remove boilerplate code but not at the cost of readability.
 
 Imagine applying any or all of the following constraints in one line of code to a view: top, leading, trailing, bottom, width, height, centerX, centerY. Not enough? Start chaining your snap calls to support adjacents snaps. This is all possible with `SnapLayout`.
 
@@ -40,6 +40,9 @@ SnapLayout handles `translatesAutoresizingMaskIntoConstraints` and references th
 * iOS
   * Fully Compatible With: **iOS 9.0 and above**
   * Minimum Deployment Target: **iOS 9.0**
+* MacOS
+  * Fully Compatible With: **MacOS 10.11 and above**
+  * Minimum Deployment Target: **iOS 10.11**
 
 ### Installation
 
@@ -61,17 +64,17 @@ pod "SnapLayout"
 * Powerful API supporting snapping of adjacent views
 
 
-### [`UIView`](SnapLayout/Classes/SnapLayout.swift) extension methods
+### [`Methods`](SnapLayout/Classes/SnapLayout.swift)
 ```swift
-func snap(to view: UIView? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: CGFloat? = nil, centerY: CGFloat? = nil, isActive: Bool = true) -> SnapManager
-func snap(to view: UIView? = nil, constants: SnapConfig, isActive: Bool = true) -> SnapManager
-func snapWidth(to view: UIView, multiplier: CGFloat = 1, isActive: Bool = true) -> SnapManager
-func snapHeight(to view: UIView, multiplier: CGFloat = 1, isActive: Bool = true) -> SnapManager
+func snap(to view: View? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: CGFloat? = nil, centerY: CGFloat? = nil, isActive: Bool = true) -> SnapManager
+func snap(to view: View? = nil, constants: SnapConfig, isActive: Bool = true) -> SnapManager
+func snapWidth(to view: View, multiplier: CGFloat = 1, isActive: Bool = true) -> SnapManager
+func snapHeight(to view: View, multiplier: CGFloat = 1, isActive: Bool = true) -> SnapManager
 func snap(size: CGSize, isActive: Bool = true) -> SnapManager
-func snap(trailingView: UIView, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager
-func snap(leadingView: UIView, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager
-func snap(bottomView: UIView, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager
-func snap(topView: UIView, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager
+func snap(trailingView: View, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager
+func snap(leadingView: View, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager
+func snap(bottomView: View, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager
+func snap(topView: View, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager
 ```
 
 ### Sample Code
@@ -104,7 +107,7 @@ let config = SnapConfig(top: 50, leading: 50, trailing: 50, width: 30, centerX: 
 button.snap(constants: config)
 ```
 
-### Activating Constraints
+### To Activate or not to Activate
 SnapLayout, by default, activates all constraints it creates; however, this can be disabled by passing false to `isActive`.
 
 ```swift
@@ -118,9 +121,11 @@ SnapLayout will also print out errors to log if a `snap` was not properly applie
 SnapLayout Error - No constraint was applied for view: <UIView: 0x7fcb8f4031d0; frame = (0 0; 0 0); layer = <CALayer: 0x608000036320>>
 ```
 
-### Example App
+### Example Apps
 
 To run the example project, run `pod try SnapLayout`.
+
+This example project contains not only an `Example-iOS` target, but also an `Example-MacOS` target. This is a great introduction to become more familiar with the library.
 
 ## Author
 
