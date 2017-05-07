@@ -6,7 +6,7 @@
 [![Platform](https://img.shields.io/cocoapods/p/SnapLayout.svg?style=flat)](http://cocoapods.org/pods/SnapLayout)
 [![License](https://img.shields.io/cocoapods/l/SnapLayout.svg?style=flat)](http://cocoapods.org/pods/SnapLayout)
 
-Concise API for iOS & MacOS Auto Layout. SnapLayout extends `UIView` and `NSView` to deliver a list of APIs to improve readability while also shortening constraint code. Internally uses AutoLayout to provide the best experience. With SnapLayout, developers can remove boilerplate code but not at the cost of readability.
+Concise API for Auto Layout. SnapLayout extends `UIView` and `NSView` to deliver a list of APIs to improve readability while also shortening constraint code. Internally uses AutoLayout to provide the best experience. With SnapLayout, developers can remove boilerplate code but not at the cost of readability.
 
 Imagine applying any or all of the following constraints in one line of code to a view: top, leading, trailing, bottom, width, height, centerX, centerY. Not enough? Start chaining your snap calls to support adjacents snaps. This is all possible with `SnapLayout`.
 
@@ -37,13 +37,12 @@ SnapLayout handles `translatesAutoresizingMaskIntoConstraints` and references th
 * Xcode
   * Language Support: **Swift** *(3.0)*
   * Fully Compatible With: **Xcode 8.0 and higher**
-  * Minimum Supported Version: **Xcode 8.0**
 * iOS
   * Fully Compatible With: **iOS 9.0 and above**
-  * Minimum Deployment Target: **iOS 9.0**
-* MacOS
-  * Fully Compatible With: **MacOS 10.11 and above**
-  * Minimum Deployment Target: **iOS 10.11**
+* macOS
+  * Fully Compatible With: **macOS 10.11 and above**
+* tvOS
+  * Fully Compatible With: **tvOS 9.0 and above**
 
 ### Installation
 
