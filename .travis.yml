@@ -17,7 +17,7 @@ before_install:
 
 script:
   # xcpretty will sometimes cause CI to fail: https://github.com/bitrise-io/bitrise.io/issues/5
-    - set -o pipefail && xcodebuild -workspace Example/SnapLayout.xcworkspace -scheme Pods-SnapLayout_ExampleTests -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' build test # | xcpretty -c
+    - set -o pipefail && xcodebuild -workspace Example/SnapLayout.xcworkspace -scheme SnapLayout_ExampleTests -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' build test # | xcpretty -c
     - pod lib lint --allow-warnings # warning states variable should be immutable but the variable does change. Seems to be lint issue
 
 after_success: slather
