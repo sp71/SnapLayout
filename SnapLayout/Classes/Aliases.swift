@@ -6,8 +6,10 @@
 //
 //
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
+    /// Allows views to be OS independent while leveraging existing code
     public typealias View = UIView
 #elseif os(OSX)
+    /// Allows views to be OS independent while leveraging existing code
     public typealias View = NSView
 #endif
