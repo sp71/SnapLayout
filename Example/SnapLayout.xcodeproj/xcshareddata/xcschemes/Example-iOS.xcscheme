@@ -15,22 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-               BuildableName = "SnapLayout_Example.app"
-               BlueprintName = "SnapLayout_Example"
-               ReferencedContainer = "container:SnapLayout.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "SnapLayout_Tests.xctest"
-               BlueprintName = "SnapLayout_Tests"
+               BuildableName = "Example-iOS.app"
+               BlueprintName = "Example-iOS"
                ReferencedContainer = "container:SnapLayout.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -40,36 +26,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      codeCoverageEnabled = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "607FACE41AFB9204008FA782"
-               BuildableName = "SnapLayout_Tests.xctest"
-               BlueprintName = "SnapLayout_Tests"
-               ReferencedContainer = "container:SnapLayout.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "05D8B3561E8E1D7C00E5819A"
-               BuildableName = "SnapLayout_ExampleTests.xctest"
-               BlueprintName = "SnapLayout_ExampleTests"
-               ReferencedContainer = "container:SnapLayout.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "SnapLayout_Example.app"
-            BlueprintName = "SnapLayout_Example"
+            BuildableName = "Example-iOS.app"
+            BlueprintName = "Example-iOS"
             ReferencedContainer = "container:SnapLayout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -91,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "SnapLayout_Example.app"
-            BlueprintName = "SnapLayout_Example"
+            BuildableName = "Example-iOS.app"
+            BlueprintName = "Example-iOS"
             ReferencedContainer = "container:SnapLayout.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -110,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "607FACCF1AFB9204008FA782"
-            BuildableName = "SnapLayout_Example.app"
-            BlueprintName = "SnapLayout_Example"
+            BuildableName = "Example-iOS.app"
+            BlueprintName = "Example-iOS"
             ReferencedContainer = "container:SnapLayout.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
