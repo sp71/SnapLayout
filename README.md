@@ -127,6 +127,9 @@ To run the example project, run `pod try SnapLayout`.
 
 This example project contains not only an `Example-iOS` target, but also an `Example-MacOS` target. This is a great introduction to become more familiar with the library.
 
+## Blogs
+- [Medium](https://medium.com/@satindersingh71/snaplayout-5758417ee9a0)
+
 ## Author
 
 Satinder Singh, satindersingh71@gmail.com
