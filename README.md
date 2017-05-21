@@ -1,10 +1,10 @@
 # [![SnapLayout](https://github.com/sp71/SnapLayout/blob/master/Assets/snapLayout.png?raw=true)](#)
 [![Build Status](https://travis-ci.org/sp71/SnapLayout.svg?branch=master)](https://travis-ci.org/sp71/SnapLayout)
-[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/SnapLayout.svg)](http://cocoapods.org/pods/SnapLayout)
+[![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/SnapLayout.svg)](http://cocoadocs.org/docsets/SnapLayout)
 [![Coverage Status](https://coveralls.io/repos/github/sp71/SnapLayout/badge.svg)](https://coveralls.io/github/sp71/SnapLayout)
 [![Version](https://img.shields.io/cocoapods/v/SnapLayout.svg?style=flat)](http://cocoapods.org/pods/SnapLayout)
 [![Platform](https://img.shields.io/cocoapods/p/SnapLayout.svg?style=flat)](http://cocoapods.org/pods/SnapLayout)
-[![License](https://img.shields.io/cocoapods/l/SnapLayout.svg?style=flat)](http://cocoapods.org/pods/SnapLayout)
+[![License](https://img.shields.io/cocoapods/l/SnapLayout.svg?style=flat)](https://github.com/sp71/SnapLayout/blob/master/LICENSE)
 
 Concise API for Auto Layout. SnapLayout extends `UIView` and `NSView` to deliver a list of APIs to improve readability while also shortening constraint code. Internally uses AutoLayout to provide the best experience. With SnapLayout, developers can remove boilerplate code but not at the cost of readability.
 
