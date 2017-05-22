@@ -3,6 +3,7 @@
 [![CocoaPods](https://img.shields.io/cocoapods/metrics/doc-percent/SnapLayout.svg)](http://cocoadocs.org/docsets/SnapLayout)
 [![Coverage Status](https://coveralls.io/repos/github/sp71/SnapLayout/badge.svg)](https://coveralls.io/github/sp71/SnapLayout)
 [![Version](https://img.shields.io/cocoapods/v/SnapLayout.svg?style=flat)](http://cocoapods.org/pods/SnapLayout)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Platform](https://img.shields.io/cocoapods/p/SnapLayout.svg?style=flat)](http://cocoapods.org/pods/SnapLayout)
 [![License](https://img.shields.io/cocoapods/l/SnapLayout.svg?style=flat)](https://github.com/sp71/SnapLayout/blob/master/LICENSE)
 
@@ -44,13 +45,15 @@ SnapLayout handles `translatesAutoresizingMaskIntoConstraints` and references th
 * tvOS
   * Fully Compatible With: **tvOS 9.0 and above**
 
-### Installation
-
-SnapLayout is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+### Installation with [CocoaPods](http://cocoapods.org)
 
 ```ruby
 pod "SnapLayout"
+```
+
+### Installation with [Carthage](https://github.com/Carthage/Carthage)
+```
+github "sp71/SnapLayout"
 ```
 
 ## Usage
