@@ -163,7 +163,7 @@ class SnapManagerTests: BaseTestCase {
                                     height: heightConstant)
         let centerConfig = SnapConfig(centerX: centerXConstant, centerY: centerYConstant)
         let snapManager = childView.snap(constants: snapConfig)
-                                   .snap(constants: centerConfig)
+                                   .snap(config: centerConfig)
         XCTAssertNotNil(snapManager.top)
         XCTAssertEqual(snapManager.top!.constant, topConstant)
         XCTAssertNotNil(snapManager.leading)

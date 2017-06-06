@@ -84,24 +84,24 @@ public class SnapManager {
     }
 
     /// Snap to view based on argument values.
-    /// Nil properties within ConstraintConstants will not apply constraints.
+    /// nil properties within SnapConfig will not apply constraints.
     ///
     /// - Parameters:
     ///   - view: View to to apply constraints with (defaulted to superview if nil)
-    ///   - constants: ConstraintConstants to apply
+    ///   - config: SnapConfig to apply
     ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    public func snap(to view: View? = nil, constants: SnapConfig, isActive: Bool = true) -> SnapManager {
+    public func snap(to view: View? = nil, config: SnapConfig, isActive: Bool = true) -> SnapManager {
         return snap(to: view,
-                    top: constants.top,
-                    leading: constants.leading,
-                    bottom: constants.bottom,
-                    trailing: constants.trailing,
-                    width: constants.width,
-                    height: constants.height,
-                    centerX: constants.centerX,
-                    centerY: constants.centerY,
+                    top: config.top,
+                    leading: config.leading,
+                    bottom: config.bottom,
+                    trailing: config.trailing,
+                    width: config.width,
+                    height: config.height,
+                    centerX: config.centerX,
+                    centerY: config.centerY,
                     isActive: isActive)
     }
     
