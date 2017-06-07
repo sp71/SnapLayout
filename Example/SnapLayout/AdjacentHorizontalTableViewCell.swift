@@ -27,7 +27,7 @@ internal final class AdjacentHorizontalTableViewCell: TitleTableViewCell {
     fileprivate func setupLabels() {
         let leadingLabel = Style.subtitleLabel(text: "Leading Label")
         contentView.addSubview(leadingLabel)
-        leadingLabel.snap(constants: leadingLabelConfig)
+        leadingLabel.snap(config: leadingLabelConfig)
         
         let trailingLabel = Style.subtitleLabel(text: "Trailing Label")
         contentView.addSubview(trailingLabel)

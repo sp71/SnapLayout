@@ -69,15 +69,15 @@ github "sp71/SnapLayout"
 
 ### [`Methods`](SnapLayout/Classes/SnapLayout.swift)
 ```swift
-func snap(to view: View? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: CGFloat? = nil, centerY: CGFloat? = nil, isActive: Bool = true) -> SnapManager
-func snap(to view: View? = nil, constants: SnapConfig, isActive: Bool = true) -> SnapManager
-func snapWidth(to view: View, multiplier: CGFloat = 1, isActive: Bool = true) -> SnapManager
-func snapHeight(to view: View, multiplier: CGFloat = 1, isActive: Bool = true) -> SnapManager
-func snap(size: CGSize, isActive: Bool = true) -> SnapManager
-func snap(trailingView: View, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager
-func snap(leadingView: View, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager
-func snap(bottomView: View, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager
-func snap(topView: View, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager
+func snap(to view: View? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil, trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: CGFloat? = nil, centerY: CGFloat? = nil, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager
+func snap(to view: View? = nil, config: SnapConfig, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager
+func snapWidth(to view: View, multiplier: CGFloat = 1, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager
+func snapHeight(to view: View, multiplier: CGFloat = 1, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager
+func snap(size: CGSize, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager
+func snap(trailingView: View, constant: CGFloat = 0, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager
+func snap(leadingView: View, constant: CGFloat = 0, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager
+func snap(bottomView: View, constant: CGFloat = 0, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager
+func snap(topView: View, constant: CGFloat = 0, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager
 ```
 
 ### Sample Code
@@ -102,12 +102,26 @@ print(snapManager.top?.constant)    # 8.0
 print(snapManager.height?.constant) # 0.5
 ```
 Snap calls may also be chained and will continue to return a `SnapManager`.
-### Constants
+### Config
 A `SnapConfig ` struct is also available where a developer may list all of their constraint constants beforehand and provide this type to the snap method argument.
 
 ```swift
 let config = SnapConfig(top: 50, leading: 50, trailing: 50, width: 30, centerX: 0)
-button.snap(constants: config)
+button.snap(config: config)
+```
+
+### Priority
+SnapLayout assumes required priority (same default as Apple) unless otherwise specified for those created constraints.
+
+```swift
+button1.snap(trailingView: button2, constant: 8, priority: UILayoutPriorityDefaultLow)
+```
+
+In the following example, the top, leading, bottom, and trailing constraint all have a priority of required; however, the height constraint has a `UILayoutPriorityDefaultHigh` priority. That's it!
+
+```swift
+rectangleView.snap(top: 48, leading: 16, bottom: 16, trailing: 16)
+             .snap(height: 40, priority: UILayoutPriorityDefaultHigh)
 ```
 
 ### To Activate or not to Activate
