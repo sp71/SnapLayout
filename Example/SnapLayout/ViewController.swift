@@ -38,7 +38,7 @@ internal final class ViewController: UIViewController {
         tableView.allowsSelection = false
         tableView.tableFooterView = UIView(frame: .zero)
         view.addSubview(tableView)
-        tableView.snap(constants: .zero) // snaps top, leading, bottom, and trailing
+        tableView.snap(config: .zero) // snaps top, leading, bottom, and trailing
     }
 
 }

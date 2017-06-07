@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SnapLayout
 
 /// Displays rectangle view with a constraint whose priority is updated
 class PriorityTableViewCell: TitleTableViewCell {
@@ -27,14 +28,11 @@ class PriorityTableViewCell: TitleTableViewCell {
         contentView.addSubview(rectangleView)
         
         // Snaps square view by pinning to all 4 sides (activated constraints)
-        // Then creates an inactive height constraint whose priority is updated before being activated through `squareViewSnapManager`
+        // Then creates a height constraint whose priority is updated and then activated
         // Updating height priority to avoid following runtime warning
         // http://stackoverflow.com/questions/28410309/strange-uiview-encapsulated-layout-height-error
-        let squareViewSnapManager = rectangleView
-            .snap(top: 48, leading: 16, bottom: 16, trailing: 16)
-            .snap(height: 40, isActive: false)
-        squareViewSnapManager.height?.priority = 999
-        squareViewSnapManager.height?.isActive = true
+        rectangleView.snap(top: 48, leading: 16, bottom: 16, trailing: 16)
+                     .snap(height: 40, priority: UILayoutPriorityDefaultHigh)
         
         let circleView = UIView()
         circleView.backgroundColor = .green

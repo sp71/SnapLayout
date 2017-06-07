@@ -90,7 +90,7 @@ class SnapManagerTests: BaseTestCase {
         let containerView = UIView()
         containerView.addSubview(containerViewSubview)
         containerView.addSubview(otherView)
-        let snapManager = containerViewSubview.snap(to: otherView, constants: .zero)
+        let snapManager = containerViewSubview.snap(to: otherView, config: .zero)
         XCTAssertEqual(containerViewSubview.translatesAutoresizingMaskIntoConstraints, false)
         XCTAssertNotNil(snapManager.top)
         XCTAssertEqual(snapManager.top!.constant, 0)
@@ -124,7 +124,7 @@ class SnapManagerTests: BaseTestCase {
                                     height: heightConstant,
                                     centerX: centerXConstant,
                                     centerY: centerYConstant)
-        let snapManager = childView.snap(constants: snapConfig)
+        let snapManager = childView.snap(config: snapConfig)
         XCTAssertEqual(childView.translatesAutoresizingMaskIntoConstraints, false)
         XCTAssertNotNil(snapManager.top)
         XCTAssertEqual(snapManager.top!.constant, topConstant)
@@ -162,7 +162,7 @@ class SnapManagerTests: BaseTestCase {
                                     width: widthConstant,
                                     height: heightConstant)
         let centerConfig = SnapConfig(centerX: centerXConstant, centerY: centerYConstant)
-        let snapManager = childView.snap(constants: snapConfig)
+        let snapManager = childView.snap(config: snapConfig)
                                    .snap(config: centerConfig)
         XCTAssertNotNil(snapManager.top)
         XCTAssertEqual(snapManager.top!.constant, topConstant)

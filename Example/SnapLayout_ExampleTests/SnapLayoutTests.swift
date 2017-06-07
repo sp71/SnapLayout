@@ -170,5 +170,17 @@ class SnapLayoutTests: BaseTestCase {
         XCTAssertEqual(snapManagerInActive.top!.constant, topConstant)
         XCTAssertEqual(snapManagerInActive.top!.multiplier, 1.0)
     }
+
+    /// Tests priority for a snap
+    func testPriority() {
+        let snapManagerDefaultPriority = childView.snapHeight(to: childView2, multiplier: 0.5)
+        XCTAssertEqual(snapManagerDefaultPriority.height!.priority, LayoutPriorityRequired)
+
+        let snapManagerHighPriority = childView.snapWidth(to: childView2, priority: UILayoutPriorityDefaultHigh)
+        XCTAssertEqual(snapManagerHighPriority.width!.priority, UILayoutPriorityDefaultHigh)
+
+        let snapManagerLowPriority = childView.snap(top: 100, priority: UILayoutPriorityDefaultLow)
+        XCTAssertEqual(snapManagerLowPriority.top!.priority, UILayoutPriorityDefaultLow)
+    }
     
 }

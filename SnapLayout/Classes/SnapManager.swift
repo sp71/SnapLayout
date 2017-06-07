@@ -58,13 +58,14 @@ public class SnapManager {
     ///   - height: Constant to apply from heightAnchor  (if nil, not applied)
     ///   - centerX: Boolean determining if centerX should be applied  (if nil, not applied)
     ///   - centerY: Boolean determining if centerY should be applied  (if nil, not applied)
+    ///   - priority: LayoutPriority to apply upon constraint (default required)
     ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Note: width and height are not in respect to superview, but always to self.
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
     public func snap(to view: View? = nil, top: CGFloat? = nil, leading: CGFloat? = nil, bottom: CGFloat? = nil,
                      trailing: CGFloat? = nil, width: CGFloat? = nil, height: CGFloat? = nil, centerX: CGFloat? = nil,
-                     centerY: CGFloat? = nil, isActive: Bool = true) -> SnapManager {
+                     centerY: CGFloat? = nil, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         guard let weakView = weakView else {
             print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
             return SnapManager()
@@ -78,6 +79,7 @@ public class SnapManager {
                                            height: height,
                                            centerX: centerX,
                                            centerY: centerY,
+                                           priority: priority,
                                            isActive: isActive)
         sync(with: newSnapManager)
         return self
@@ -89,10 +91,11 @@ public class SnapManager {
     /// - Parameters:
     ///   - view: View to to apply constraints with (defaulted to superview if nil)
     ///   - config: SnapConfig to apply
+    ///   - priority: LayoutPriority to apply upon constraint (default required)
     ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    public func snap(to view: View? = nil, config: SnapConfig, isActive: Bool = true) -> SnapManager {
+    public func snap(to view: View? = nil, config: SnapConfig, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         return snap(to: view,
                     top: config.top,
                     leading: config.leading,
@@ -102,6 +105,7 @@ public class SnapManager {
                     height: config.height,
                     centerX: config.centerX,
                     centerY: config.centerY,
+                    priority: priority,
                     isActive: isActive)
     }
     
@@ -110,15 +114,16 @@ public class SnapManager {
     /// - Parameters:
     ///   - view: View to apply constraint with (defaulted to superview if nil)
     ///   - multiplier: Multiplier value to apply constraint with (default 1)
+    ///   - priority: LayoutPriority to apply upon constraint (default required)
     ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    public func snapWidth(to view: View, multiplier: CGFloat = 1, isActive: Bool = true) -> SnapManager {
+    public func snapWidth(to view: View, multiplier: CGFloat = 1, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         guard let weakView = weakView else {
             print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
             return SnapManager()
         }
-        let newSnapManager = weakView.snapWidth(to: view, multiplier: multiplier, isActive: isActive)
+        let newSnapManager = weakView.snapWidth(to: view, multiplier: multiplier, priority: priority, isActive: isActive)
         sync(with: newSnapManager)
         return self
     }
@@ -128,15 +133,16 @@ public class SnapManager {
     /// - Parameters:
     ///   - view: View to apply constraint with (defaulted to superview if nil)
     ///   - multiplier: Multiplier value to apply constraint with (default 1)
+    ///   - priority: LayoutPriority to apply upon constraint (default required)
     ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    public func snapHeight(to view: View, multiplier: CGFloat = 1, isActive: Bool = true) -> SnapManager {
+    public func snapHeight(to view: View, multiplier: CGFloat = 1, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         guard let weakView = weakView else {
             print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
             return SnapManager()
         }
-        let newSnapManager = weakView.snapHeight(to: view, multiplier: multiplier, isActive: isActive)
+        let newSnapManager = weakView.snapHeight(to: view, multiplier: multiplier, priority: priority, isActive: isActive)
         sync(with: newSnapManager)
         return self
     }
@@ -145,14 +151,15 @@ public class SnapManager {
     ///
     /// - Parameter size: CGSize specifying width and height
     /// - Parameter isActive: Boolean determining if constraint should be activated (default true)
+    /// - Parameter priority: LayoutPriority to apply upon constraint (default required)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    public func snap(size: CGSize, isActive: Bool = true) -> SnapManager {
+    public func snap(size: CGSize, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         guard let weakView = weakView else {
             print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
             return SnapManager()
         }
-        let newSnapManager = weakView.snap(size: size, isActive: isActive)
+        let newSnapManager = weakView.snap(size: size, priority: priority, isActive: isActive)
         sync(with: newSnapManager)
         return self
     }
@@ -162,15 +169,16 @@ public class SnapManager {
     /// - Parameters:
     ///   - trailingView: View who will be shown as the trailingView
     ///   - constant: Constant value to apply constraint with (default 0)
+    ///   - priority: LayoutPriority to apply upon constraint (default required)
     ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    public func snap(trailingView: View, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager {
+    public func snap(trailingView: View, constant: CGFloat = 0, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         guard let weakView = weakView else {
             print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
             return SnapManager()
         }
-        let newSnapManager = weakView.snap(trailingView: trailingView, constant: constant, isActive: isActive)
+        let newSnapManager = weakView.snap(trailingView: trailingView, constant: constant, priority: priority, isActive: isActive)
         sync(with: newSnapManager)
         return self
     }
@@ -180,15 +188,16 @@ public class SnapManager {
     /// - Parameters:
     ///   - leadingView: View who will be shown as the leadingView
     ///   - constant: Constant value to apply constraint with (default 0)
+    ///   - priority: LayoutPriority to apply upon constraint (default required)
     ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    public func snap(leadingView: View, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager {
+    public func snap(leadingView: View, constant: CGFloat = 0, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         guard let weakView = weakView else {
             print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
             return SnapManager()
         }
-        let newSnapManager = weakView.snap(leadingView: leadingView, constant: constant, isActive: isActive)
+        let newSnapManager = weakView.snap(leadingView: leadingView, constant: constant, priority: priority, isActive: isActive)
         sync(with: newSnapManager)
         return self
     }
@@ -198,15 +207,16 @@ public class SnapManager {
     /// - Parameters:
     ///   - bottomView: View who will be shown as the bottomView
     ///   - constant: Constant value to apply constraint with (default 0)
+    ///   - priority: LayoutPriority to apply upon constraint (default required)
     ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    public func snap(bottomView: View, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager {
+    public func snap(bottomView: View, constant: CGFloat = 0, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         guard let weakView = weakView else {
             print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
             return SnapManager()
         }
-        let newSnapManager = weakView.snap(bottomView: bottomView, constant: constant, isActive: isActive)
+        let newSnapManager = weakView.snap(bottomView: bottomView, constant: constant, priority: priority, isActive: isActive)
         sync(with: newSnapManager)
         return self
     }
@@ -216,15 +226,16 @@ public class SnapManager {
     /// - Parameters:
     ///   - topView: View who will be shown as the bottomView
     ///   - constant: Constant value to apply constraint with (default 0)
+    ///   - priority: LayoutPriority to apply upon constraint (default required)
     ///   - isActive: Boolean determining if constraint should be activated (default true)
     /// - Returns: SnapManager holding all the values associated with constraints
     @discardableResult
-    public func snap(topView: View, constant: CGFloat = 0, isActive: Bool = true) -> SnapManager {
+    public func snap(topView: View, constant: CGFloat = 0, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         guard let weakView = weakView else {
             print("SnapLayout Error - Cannot apply constraint upon a view that is not retained")
             return SnapManager()
         }
-        let newSnapManager = weakView.snap(topView: topView, constant: constant, isActive: isActive)
+        let newSnapManager = weakView.snap(topView: topView, constant: constant, priority: priority, isActive: isActive)
         sync(with: newSnapManager)
         return self
     }
