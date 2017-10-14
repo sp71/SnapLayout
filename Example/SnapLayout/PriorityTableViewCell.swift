@@ -32,7 +32,7 @@ class PriorityTableViewCell: TitleTableViewCell {
         // Updating height priority to avoid following runtime warning
         // http://stackoverflow.com/questions/28410309/strange-uiview-encapsulated-layout-height-error
         rectangleView.snap(top: 48, leading: 16, bottom: 16, trailing: 16)
-                     .snap(height: 40, priority: UILayoutPriorityDefaultHigh)
+                     .snap(height: 40, priority: .defaultHigh)
         
         let circleView = UIView()
         circleView.backgroundColor = .green
