@@ -138,6 +138,9 @@ SnapLayout will also print out errors to log if a `snap` was not properly applie
 SnapLayout Error - No constraint was applied for view: <UIView: 0x7fcb8f4031d0; frame = (0 0; 0 0); layer = <CALayer: 0x608000036320>>
 ```
 
+### Safe Area Layout Guide Support
+SnapLayout will apply constraints using `safeAreaLayoutGuide` if the app is running iOS 11; otherwise, it will apply the view's layout anchors directly.
+
 ### Example Apps
 
 To run the example project, run `pod try SnapLayout`.

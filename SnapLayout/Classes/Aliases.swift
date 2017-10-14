@@ -12,7 +12,7 @@
     /// Allows layout priority to be OS independent while leveraging existing code
     public typealias LayoutPriority = UILayoutPriority
     /// Allows layout priority required to be OS independent while leveraging existing code
-    public var LayoutPriorityRequired = UILayoutPriorityRequired
+    public var LayoutPriorityRequired = UILayoutPriority.required
 #elseif os(OSX)
     /// Allows views to be OS independent while leveraging existing code
     public typealias View = NSView

@@ -42,12 +42,12 @@ public extension View {
             }
         }
         if let width = width {
-            let constraint = widthAnchor.constraint(equalToConstant: width)
+            let constraint = os_anchors.widthAnchor.constraint(equalToConstant: width)
             snapManager.width = constraint
             constraintList.append(constraint)
         }
         if let height = height {
-            let constraint = heightAnchor.constraint(equalToConstant: height)
+            let constraint = os_anchors.heightAnchor.constraint(equalToConstant: height)
             snapManager.height = constraint
             constraintList.append(constraint)
         }
@@ -55,32 +55,32 @@ public extension View {
             return snapManager
         }
         if let top = top {
-            let constraint = topAnchor.constraint(equalTo: view.topAnchor, constant: top)
+            let constraint = topAnchor.constraint(equalTo: view.os_anchors.topAnchor, constant: top)
             snapManager.top = constraint
             constraintList.append(constraint)
         }
         if let leading = leading {
-            let constraint = leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: leading)
+            let constraint = leadingAnchor.constraint(equalTo: view.os_anchors.leadingAnchor, constant: leading)
             snapManager.leading = constraint
             constraintList.append(constraint)
         }
         if let bottom = bottom {
-            let constraint = view.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottom)
+            let constraint = view.os_anchors.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottom)
             snapManager.bottom = constraint
             constraintList.append(constraint)
         }
         if let trailing = trailing {
-            let constraint = view.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailing)
+            let constraint = view.os_anchors.trailingAnchor.constraint(equalTo: trailingAnchor, constant: trailing)
             snapManager.trailing = constraint
             constraintList.append(constraint)
         }
         if let centerX = centerX {
-            let constraint = centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: centerX)
+            let constraint = centerXAnchor.constraint(equalTo: view.os_anchors.centerXAnchor, constant: centerX)
             snapManager.centerX = constraint
             constraintList.append(constraint)
         }
         if let centerY = centerY {
-            let constraint = centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: centerY)
+            let constraint = centerYAnchor.constraint(equalTo: view.os_anchors.centerYAnchor, constant: centerY)
             snapManager.centerY = constraint
             constraintList.append(constraint)
         }
@@ -123,7 +123,7 @@ public extension View {
     func snapWidth(to view: View, multiplier: CGFloat = 1, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
-        snapManager.width = widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: multiplier)
+        snapManager.width = widthAnchor.constraint(equalTo: view.os_anchors.widthAnchor, multiplier: multiplier)
         snapManager.width?.priority = priority
         snapManager.width?.isActive = isActive
         return snapManager
@@ -141,7 +141,7 @@ public extension View {
     func snapHeight(to view: View, multiplier: CGFloat = 1, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
-        snapManager.height = heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: multiplier)
+        snapManager.height = heightAnchor.constraint(equalTo: view.os_anchors.heightAnchor, multiplier: multiplier)
         snapManager.height?.priority = priority
         snapManager.height?.isActive = isActive
         return snapManager
@@ -171,7 +171,7 @@ public extension View {
     func snap(trailingView: View, constant: CGFloat = 0, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
-        snapManager.trailing = trailingView.leadingAnchor.constraint(equalTo: trailingAnchor, constant: constant)
+        snapManager.trailing = trailingView.os_anchors.leadingAnchor.constraint(equalTo: trailingAnchor, constant: constant)
         snapManager.trailing?.priority = priority
         snapManager.trailing?.isActive = isActive
         return snapManager
@@ -189,7 +189,7 @@ public extension View {
     func snap(leadingView: View, constant: CGFloat = 0, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
-        snapManager.leading = leadingAnchor.constraint(equalTo: leadingView.trailingAnchor, constant: constant)
+        snapManager.leading = leadingAnchor.constraint(equalTo: leadingView.os_anchors.trailingAnchor, constant: constant)
         snapManager.leading?.priority = priority
         snapManager.leading?.isActive = isActive
         return snapManager
@@ -207,7 +207,7 @@ public extension View {
     func snap(bottomView: View, constant: CGFloat = 0, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
-        snapManager.bottom = bottomView.topAnchor.constraint(equalTo: bottomAnchor, constant: constant)
+        snapManager.bottom = bottomView.os_anchors.topAnchor.constraint(equalTo: bottomAnchor, constant: constant)
         snapManager.bottom?.priority = priority
         snapManager.bottom?.isActive = isActive
         return snapManager
@@ -225,7 +225,7 @@ public extension View {
     func snap(topView: View, constant: CGFloat = 0, priority: LayoutPriority = LayoutPriorityRequired, isActive: Bool = true) -> SnapManager {
         translatesAutoresizingMaskIntoConstraints = false
         let snapManager = SnapManager(view: self)
-        snapManager.top = topAnchor.constraint(equalTo: topView.bottomAnchor, constant: constant)
+        snapManager.top = topAnchor.constraint(equalTo: topView.os_anchors.bottomAnchor, constant: constant)
         snapManager.top?.priority = priority
         snapManager.top?.isActive = isActive
         return snapManager
