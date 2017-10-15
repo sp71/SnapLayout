@@ -40,8 +40,8 @@ public protocol Anchorable {
     var centerYAnchor: NSLayoutYAxisAnchor { get }
 }
 
-// MARK: - UIView Extension
-extension UIView: Anchorable {
+// MARK: - View Extension
+extension View: Anchorable {
 
     /// Since iOS 11 encourages `safeAreaLayoutGuide` but previous OS versions do not support this,
     /// this ensures caller uses appropriate anchors by taking into account OS.
@@ -49,7 +49,11 @@ extension UIView: Anchorable {
     ///   - view: View to return or its `safeAreaLayoutGuide` if possible
     var os_anchors: Anchorable {
         if #available(iOS 11.0, *) {
-            return safeAreaLayoutGuide
+            #if os(iOS) || os(tvOS)
+                return safeAreaLayoutGuide
+            #elseif os(OSX)
+                return self
+            #endif
         } else {
             return self
         }
@@ -57,5 +61,5 @@ extension UIView: Anchorable {
 
 }
 
-// MARK: - UILayoutGuide Extension
-extension UILayoutGuide: Anchorable { }
+// MARK: - LayoutGuide Extension
+extension LayoutGuide: Anchorable { }
