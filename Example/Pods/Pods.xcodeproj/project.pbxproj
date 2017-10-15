@@ -64,16 +64,16 @@
 		1A347F78F5E15DA2EB44BE91A02AE458 /* Pods-Example-MacOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-MacOS-resources.sh"; sourceTree = "<group>"; };
 		1D46738CF75CE83B5EDE03CD1B192DDE /* SnapLayout-iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "SnapLayout-iOS.xcconfig"; path = "../SnapLayout-iOS/SnapLayout-iOS.xcconfig"; sourceTree = "<group>"; };
 		1DB3037FCD2F82FC1D76B395448586D9 /* Pods-Example-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		20AC364D4F1D9494949F6BFB07F0DFE1 /* SnapLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapLayout.framework; path = "SnapLayout-OSX.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		20AC364D4F1D9494949F6BFB07F0DFE1 /* SnapLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		228EE9C9D3E4D8A19424E473B8B469F3 /* Anchorable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Anchorable.swift; sourceTree = "<group>"; };
 		2A8DA400B353A52AD6A06A863C04DC4E /* Pods-Example-iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Example-iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
-		2FC6B059221FD07F1904230D65C689E0 /* Pods_Example_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Example_iOS.framework; path = "Pods-Example-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2FC6B059221FD07F1904230D65C689E0 /* Pods_Example_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3389E81665F14679BF0C70B647004AB8 /* SnapLayout-OSX-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapLayout-OSX-umbrella.h"; sourceTree = "<group>"; };
 		33F5CC5C29D83C9F015EEF26D2BCFB49 /* Pods-Example-iOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Example-iOS-resources.sh"; sourceTree = "<group>"; };
 		37E6E791C26F6AA38A7E3059B700E949 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AE94905C7D108048DB202A4AC2FE937 /* Aliases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
 		455E998C221E00005AF08D22CEBA0B35 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4D21E906A3D6C88F1B43BD3CB7F52D76 /* SnapLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapLayout.framework; path = "SnapLayout-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D21E906A3D6C88F1B43BD3CB7F52D76 /* SnapLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EF5FBC888A2CD459AEFEF2A5CF23ED4 /* Pods-SnapLayout_ExampleTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SnapLayout_ExampleTests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		52E647DC969FAEDE7402CB54755DB090 /* SnapLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SnapLayout.swift; sourceTree = "<group>"; };
 		5561418AD639A914F465684C30797157 /* Pods-SnapLayout_ExampleTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SnapLayout_ExampleTests-umbrella.h"; sourceTree = "<group>"; };
@@ -81,21 +81,21 @@
 		6828E21EB4036B58C79EDD8E4F4E8835 /* SnapLayout-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "SnapLayout-iOS-umbrella.h"; path = "../SnapLayout-iOS/SnapLayout-iOS-umbrella.h"; sourceTree = "<group>"; };
 		684786517801F2AE36C71F4A88F768CF /* SnapLayout-OSX.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "SnapLayout-OSX.xcconfig"; sourceTree = "<group>"; };
 		6AC5CEC403950228AE8ED524B82B2BBC /* Pods-Example-MacOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Example-MacOS-umbrella.h"; sourceTree = "<group>"; };
-		6C3AA0837F6B33192815E6635CB60605 /* Pods-SnapLayout_ExampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SnapLayout_ExampleTests.modulemap"; sourceTree = "<group>"; };
-		6C7B413B64829145FEA6A98B134D2605 /* SnapLayout-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; name = "SnapLayout-iOS.modulemap"; path = "../SnapLayout-iOS/SnapLayout-iOS.modulemap"; sourceTree = "<group>"; };
-		6DAD096032181496CE5FA980265A8A89 /* Pods_SnapLayout_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SnapLayout_ExampleTests.framework; path = "Pods-SnapLayout_ExampleTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C3AA0837F6B33192815E6635CB60605 /* Pods-SnapLayout_ExampleTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-SnapLayout_ExampleTests.modulemap"; sourceTree = "<group>"; };
+		6C7B413B64829145FEA6A98B134D2605 /* SnapLayout-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; name = "SnapLayout-iOS.modulemap"; path = "../SnapLayout-iOS/SnapLayout-iOS.modulemap"; sourceTree = "<group>"; };
+		6DAD096032181496CE5FA980265A8A89 /* Pods_SnapLayout_ExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapLayout_ExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		777E1D1F41032095C708FF7A49C1494C /* SnapLayout-OSX-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapLayout-OSX-prefix.pch"; sourceTree = "<group>"; };
 		7FE14C030B94F70C16765B731DF0A6C5 /* Pods-SnapLayout_ExampleTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SnapLayout_ExampleTests-dummy.m"; sourceTree = "<group>"; };
 		7FE51030F7CC208E0EEE8D6C11306A74 /* Pods-Example-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		878DB48BEA9A23AB2579E890B513A055 /* Pods-SnapLayout_ExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnapLayout_ExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8CD84B79C5EB7B981311077999C64542 /* Pods-SnapLayout_ExampleTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SnapLayout_ExampleTests-resources.sh"; sourceTree = "<group>"; };
 		8CF829049E3A655D1AD0EEDE72B7F2F6 /* SnapLayout-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "SnapLayout-iOS-dummy.m"; path = "../SnapLayout-iOS/SnapLayout-iOS-dummy.m"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		93E9599EB62140FE2F92CAE16C55AD68 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		958FAD66B27E372B25527F5F1F672633 /* SnapLayout-OSX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "SnapLayout-OSX.modulemap"; sourceTree = "<group>"; };
+		958FAD66B27E372B25527F5F1F672633 /* SnapLayout-OSX.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "SnapLayout-OSX.modulemap"; sourceTree = "<group>"; };
 		9B4147C43F9F8BF1722CC88773DF5CD5 /* Pods-SnapLayout_ExampleTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SnapLayout_ExampleTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		A3574208367DDFF943B8ECF9ED5528FC /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../SnapLayout-iOS/Info.plist"; sourceTree = "<group>"; };
-		A80554AD38AA7A2C5FA37B99B966B432 /* Pods_Example_MacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Example_MacOS.framework; path = "Pods-Example-MacOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A80554AD38AA7A2C5FA37B99B966B432 /* Pods_Example_MacOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example_MacOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB1E6C918151E9F3E2413C553E4D2BFC /* SnapConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SnapConfig.swift; sourceTree = "<group>"; };
 		BFBF2CCAA578F8A7627DD9F6FBA85CC7 /* Pods-Example-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Example-iOS-dummy.m"; sourceTree = "<group>"; };
 		C5EE9E15300D57FB8A5EABC0B021228D /* Pods-SnapLayout_ExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SnapLayout_ExampleTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,10 +108,10 @@
 		DB8E2D632CADFEBE217900FD1D4F3ABF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		E3B5664FBBA893543619DF9D7FD0FD31 /* Pods-SnapLayout_ExampleTests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SnapLayout_ExampleTests-frameworks.sh"; sourceTree = "<group>"; };
 		F28CDFCD5FC0BBDC562DC10B17315BDD /* Pods-Example-MacOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Example-MacOS-acknowledgements.plist"; sourceTree = "<group>"; };
-		F3142B09C315428E19E954423B313EC4 /* Pods-Example-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Example-iOS.modulemap"; sourceTree = "<group>"; };
+		F3142B09C315428E19E954423B313EC4 /* Pods-Example-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Example-iOS.modulemap"; sourceTree = "<group>"; };
 		F48B38B09D6AF656ADB90664DAA933D4 /* Pods-Example-MacOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Example-MacOS-dummy.m"; sourceTree = "<group>"; };
 		F6D8FE5D4931C1C72142DD2E978CD798 /* Pods-Example-MacOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example-MacOS.release.xcconfig"; sourceTree = "<group>"; };
-		F6FC703F146E2C6FD2D41B94CA4A7C46 /* Pods-Example-MacOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Example-MacOS.modulemap"; sourceTree = "<group>"; };
+		F6FC703F146E2C6FD2D41B94CA4A7C46 /* Pods-Example-MacOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Example-MacOS.modulemap"; sourceTree = "<group>"; };
 		F7EFE1F6AFABBD8A44F71A3A08CAFE8B /* SnapManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SnapManager.swift; sourceTree = "<group>"; };
 		FBF6FDCA00D05C776034BE19A35BE10C /* SnapLayout-OSX-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SnapLayout-OSX-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -307,7 +307,6 @@
 				52E647DC969FAEDE7402CB54755DB090 /* SnapLayout.swift */,
 				F7EFE1F6AFABBD8A44F71A3A08CAFE8B /* SnapManager.swift */,
 			);
-			name = Classes;
 			path = Classes;
 			sourceTree = "<group>";
 		};
@@ -328,7 +327,6 @@
 			children = (
 				DEDF92A839470E32F9A204E55CC38CE8 /* Classes */,
 			);
-			name = SnapLayout;
 			path = SnapLayout;
 			sourceTree = "<group>";
 		};
@@ -638,7 +636,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -792,7 +790,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -881,7 +879,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -953,7 +951,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -994,7 +992,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1031,7 +1029,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
