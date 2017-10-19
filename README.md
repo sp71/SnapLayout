@@ -114,14 +114,14 @@ button.snap(config: config)
 SnapLayout assumes required priority (same default as Apple) unless otherwise specified for those created constraints.
 
 ```swift
-button1.snap(trailingView: button2, constant: 8, priority: UILayoutPriorityDefaultLow)
+button1.snap(trailingView: button2, constant: 8, priority: .low)
 ```
 
-In the following example, the top, leading, bottom, and trailing constraint all have a priority of required; however, the height constraint has a `UILayoutPriorityDefaultHigh` priority. That's it!
+In the following example, the top, leading, bottom, and trailing constraint all have a priority of required; however, the height constraint has a `UILayoutPriority.defaultHigh` priority. That's it!
 
 ```swift
 rectangleView.snap(top: 48, leading: 16, bottom: 16, trailing: 16)
-             .snap(height: 40, priority: UILayoutPriorityDefaultHigh)
+             .snap(height: 40, priority: .defaultHigh)
 ```
 
 ### To Activate or not to Activate
