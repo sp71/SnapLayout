@@ -24,7 +24,7 @@ internal final class ViewController: UIViewController {
     // MARK: - Private Methods
     fileprivate func setupTableView() {
         tableView.estimatedRowHeight = 80
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.register([WelcomeTableViewCell.self, PriorityTableViewCell.self, SizeTableViewCell.self, AdjacentVerticalTableViewCell.self,
                             AdjacentHorizontalTableViewCell.self])
         tableView.delegate = self
@@ -66,7 +66,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         case .size:
             return SizeTableViewCell.height
         default:
-            return UITableViewAutomaticDimension
+            return UITableView.automaticDimension
         }
     }
     

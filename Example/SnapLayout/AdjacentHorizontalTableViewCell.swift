@@ -14,7 +14,7 @@ internal final class AdjacentHorizontalTableViewCell: TitleTableViewCell {
     
     fileprivate let leadingLabelConfig = SnapConfig(top: 48, leading: 16, bottom: 24)
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         titleLabel.text = "Adjacent Horizontal"
         setupLabels()

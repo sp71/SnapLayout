@@ -36,8 +36,8 @@ SnapLayout handles `translatesAutoresizingMaskIntoConstraints` and references th
 ## Setup
 ### Requirements
 * Xcode
-  * Language Support: **Swift** *(3.0)*
-  * Fully Compatible With: **Xcode 8.0 and higher**
+  * Language Support: **Swift** *(5.0)*
+  * Fully Compatible With: **Xcode 10.0 and higher**
 * iOS
   * Fully Compatible With: **iOS 9.0 and above**
 * macOS

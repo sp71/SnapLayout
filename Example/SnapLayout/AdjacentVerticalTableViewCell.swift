@@ -12,7 +12,7 @@ import SnapLayout
 /// Displays two views adjacent to one another vertically
 internal final class AdjacentVerticalTableViewCell: TitleTableViewCell {
 
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         titleLabel.text = "Adjacent Vertical Views"
         setupSubtitleLabel()

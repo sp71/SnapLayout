@@ -12,7 +12,7 @@ import SnapLayout
 /// Displays rectangle view with a constraint whose priority is updated
 class PriorityTableViewCell: TitleTableViewCell {
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         titleLabel.text = "Priority Changing"
         setup()
